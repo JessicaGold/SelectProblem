@@ -9,7 +9,7 @@ public class selectProblems {
 	 */
 	public static Pair <Integer,Integer> selectRandQuickSort(int[] arr,int k)
 	{
-		return (1,1);
+		return (2,2);
 	}
 	/**
 	 * 
