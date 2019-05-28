@@ -1,5 +1,6 @@
 import javafx.util.Pair;
 import java.util.Random;
+import java.util.HashMap;
 
 
 public class selectProblems
@@ -87,7 +88,7 @@ public class selectProblems
 	{
 		int[] arr = array.clone();
 		int comps = recQuickSort(arr, 0, arr.length - 1);
-		return new Pair<Integer, Integer>(arr[k], comps);
+		return new Pair<Integer, Integer>(arr[k + 1], comps);
 	}
 	
 	
@@ -97,7 +98,15 @@ public class selectProblems
 	}
 	
 	
-	
+	/**
+	 * @param arr
+	 * @param k
+	 * @param size
+	 * @param isMin
+	 * @return number of comparisons during runTime
+	 * 
+	 * time complexity O(logn) (n here in the parameter size)
+	 */
 	private int heapifyDown(int[] arr, int k, int size, boolean isMin)
 	{
 		int ordIndx = k + 1;
@@ -132,7 +141,14 @@ public class selectProblems
 	}
 	
 	
-	
+	/**
+	 * 
+	 * @param arr
+	 * @param isMin
+	 * @return number of comparisons during runTime
+	 * 
+	 * time complexity O(n)
+	 */
 	private int buildHeap(int[] arr, boolean isMin)
 	{
 		int comps = 0;
@@ -142,7 +158,15 @@ public class selectProblems
 		return comps;
 	}
 	
-	
+	/**
+	 * 
+	 * @param arr
+	 * @param size
+	 * @param isMin
+	 * @return Pair(value of minimum, number of comparisons during runTime)
+	 * 
+	 * time complexity O(logn) (n here in the parameter size)
+	 */
 	private Pair<Integer, Integer> deleteFirstFromHeap(int[] arr, int size, boolean isMin)
 	{
 		int res = arr[0];
@@ -151,24 +175,93 @@ public class selectProblems
 		return new Pair<Integer, Integer>(res, comps);
 	}
   
-	
+	/**
+	 * 
+	 * @param array
+	 * @param k
+	 * @return
+	 * 
+	 * time complexity O(n + klogn)
+	 */
 	public Pair<Integer, Integer> selectHeap(int [] array, int k)
 	{
 		int[] arr = array.clone();
-		int res;
 		int comps = buildHeap(arr, MIN);
-		for(int i = 0; i <= k; i++) {
-			if(i == k) {
-				
-			}
+		for(int i = 0; i < k; i++) {
+			comps += deleteFirstFromHeap(arr, array.length - i, MIN).getValue();
 		}
-		return new Pair<Integer, Integer>(-1,-1);
+		return new Pair<Integer, Integer>(arr[0],comps);
 	}
   
-  public Pair<Integer, Integer> selectDoubleHeap(int [] array, int k)
-  {
-    return new Pair<Integer, Integer>(-1,-1); // to be replaced by student code. (The k'th element,#of comparsion)
-  }
+	/**
+	 * 
+	 * @param arr
+	 * @param k
+	 * @param size
+	 * @param isMin
+	 * @return number of comparisons during runTime
+	 * 
+	 * time complexity O(log n) (n here in the parameter size)
+	 */
+	private int heapifyUp(int[] arr, int k, int size, boolean isMin)
+	{
+		if(k == 0) return 0;
+		int comps = 1;
+		int curr = k;
+		while((isMin && arr[curr] > arr[curr / 2]) || 
+				(!(isMin) && arr[curr] < arr[curr / 2])) {
+			swap(arr, curr, curr / 2);
+			curr /= 2;
+			if(curr == 0) break;
+			comps++;
+		}
+		return comps;
+	}
+	
+	
+	/**
+	 * 
+	 * @param arr
+	 * @param size
+	 * @param val
+	 * @param isMin
+	 * @return number of comparisons during runTime
+	 * 
+	 * time complexity O(log n) (n here in the parameter size)
+	 */
+	private int insertToHeap(int[] arr, int size, int val, boolean isMin)
+	{
+		arr[size] = val;
+		return  heapifyUp(arr, size, size + 1, isMin);
+	}
+	
+	
+	/**
+	 * @param array
+	 * @param k
+	 * @return number of comparisons during runTime
+	 */
+	public Pair<Integer, Integer> selectDoubleHeap(int [] array, int k)
+	{
+		int[] bigHeap = array.clone();
+		int comps = buildHeap(bigHeap, MIN);
+		
+		int[] smallHeap = new int[k + 1];
+		//HashMap holds the indexes in bigHeap of the values in smallHeap
+		HashMap<Integer, Integer> indexes = new HashMap<Integer, Integer>();
+		
+		int heapSize = 0;
+		int currIndex = 0;
+		
+		smallHeap[0] = bigHeap[0];
+		heapSize++;
+		indexes.put(bigHeap[0], 0);
+		for(int i = 0; i < k;i++) {
+			//continue here
+		}
+
+		return new Pair<Integer, Integer>(-1,-1);
+	}
   
   public Pair<Integer, Integer> randQuickSelect(int [] array, int k)
   {
