@@ -48,11 +48,11 @@ public class SelectTest {
 //						return;
 //					}
 //					
-//					actual = s.randQuickSelect(array.clone(), k).getKey();
-//					if (actual != sortedArray[k-1]) {
-//						error("randQuickSelect", array, actual, sortedArray[k-1], k);
-//						return;
-//					}
+					int actual = s.randQuickSelect(array.clone(), k).getKey();
+					if (actual != sortedArray[k-1]) {
+						error("randQuickSelect", array, actual, sortedArray[k-1], k);
+						return;
+					}
 //					
 //					actual = s.medOfMedQuickSelect(array.clone(), k).getKey();
 //					if (actual != sortedArray[k-1]) {
