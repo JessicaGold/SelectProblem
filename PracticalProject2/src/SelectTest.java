@@ -13,6 +13,7 @@ public class SelectTest {
 
 		selectProblems s = new selectProblems();
 
+
 		for (int n = 1; n <= MAX_LENGTH; n++) {
 
 			for (int i = 0; i < NUM_OF_TESTS; i++) {
@@ -28,11 +29,12 @@ public class SelectTest {
 //						return;
 //					}
 					
-					int actual = s.selectInsertionSort(array.clone(), k).getKey();
-					if (actual != sortedArray[k-1]) {
-						error("selectInsertionSort", array, actual, sortedArray[k-1], k);
-						return;
-					}
+					
+//					int actual = s.selectInsertionSort(array.clone(), k).getKey();
+//					if (actual != sortedArray[k-1]) {
+//						error("selectInsertionSort", array, actual, sortedArray[k-1], k);
+//						return;
+//					}
 //					
 //					actual = s.selectHeap(array.clone(), k).getKey();
 //					if (actual != sortedArray[k-1]) {
