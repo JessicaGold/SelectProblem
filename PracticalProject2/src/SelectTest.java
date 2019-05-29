@@ -14,7 +14,7 @@ public class SelectTest {
 		selectProblems s = new selectProblems();
 
 
-		for (int n = 1; n <= MAX_LENGTH; n++) {
+		for (int n = 3; n <= MAX_LENGTH; n++) {
 
 			for (int i = 0; i < NUM_OF_TESTS; i++) {
 				int[] array = randomArray(n);
@@ -30,11 +30,11 @@ public class SelectTest {
 //					}
 					
 					
-//					int actual = s.selectInsertionSort(array.clone(), k).getKey();
-//					if (actual != sortedArray[k-1]) {
-//						error("selectInsertionSort", array, actual, sortedArray[k-1], k);
-//						return;
-//					}
+					int actual = s.selectInsertionSort(array.clone(), k).getKey();
+					if (actual != sortedArray[k-1]) {
+						error("selectInsertionSort", array, actual, sortedArray[k-1], k);
+						return;
+					}
 //					
 //					actual = s.selectHeap(array.clone(), k).getKey();
 //					if (actual != sortedArray[k-1]) {
@@ -48,7 +48,7 @@ public class SelectTest {
 //						return;
 //					}
 //					
-					int actual = s.randQuickSelect(array.clone(), k).getKey();
+					actual = s.randQuickSelect(array.clone(), k).getKey();
 					if (actual != sortedArray[k-1]) {
 						error("randQuickSelect", array, actual, sortedArray[k-1], k);
 						return;

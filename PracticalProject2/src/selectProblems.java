@@ -311,7 +311,7 @@ public class selectProblems
 	
 	public Pair<Integer, Integer> randQuickSelect(int [] array, int k)
 	{
-		return recursiveRandQuic(array, 0, array.length - 1, k, 0);
+		return recursiveRandQuic(array, 0, array.length - 1, k-1, 0);
 	}
 	
 	/**
@@ -338,7 +338,7 @@ public class selectProblems
 		// select a pivotIndex between left and right
 		int pivotIndex = randomPivot(left, right);
 		// making a partition and saving the returned pair
-		Pair<Integer, Integer> partition_pair = partition(array, left, right, pivotIndex, comp);
+		Pair<Integer, Integer> partition_pair = partition(array, left, right, pivotIndex, 0);
 		// get the pivot index
 		pivotIndex = partition_pair.getKey();
 		// add to compares was done
@@ -346,7 +346,7 @@ public class selectProblems
 		// The pivot is in its final sorted position
 		if (k == pivotIndex) {
 			//making a new Pair
-	        Pair<Integer, Integer> result_pair = new Pair<Integer, Integer>(array[k], comp);// return that element
+	        Pair<Integer, Integer> result_pair = new Pair<Integer, Integer>(array[k], new_comp);// return that element
 			return result_pair; 
 		} else if (k < pivotIndex) {
 			return recursiveRandQuic(array, left, pivotIndex - 1, k, new_comp);
