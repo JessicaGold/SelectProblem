@@ -7,7 +7,6 @@ public class selectProblems
 {
 	
 	private static final boolean MIN = true;
-	
 	private static final boolean MAX = false;
 	
 	/**
