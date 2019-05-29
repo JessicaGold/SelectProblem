@@ -91,7 +91,17 @@ public class selectProblems
 		return new Pair<Integer, Integer>(arr[k + 1], comps);
 	}
 	
-	
+	/**
+	 * 
+	 * @param array
+	 * @param k
+	 * @return number of comparisons between elements in arr
+	 * 
+	 * @pre  0 <= k < array.length
+	 * @pre array is not empty
+	 * 
+	 *complexity O(n^2)
+	 */
 	public Pair<Integer, Integer> selectInsertionSort(int [] array, int k)
 	{
 		int n = array.length;
