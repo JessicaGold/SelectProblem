@@ -109,10 +109,6 @@ public class selectProblems
         for (int i = 1; i < n; i++) { 
             int key = array[i]; 
             int j = i - 1;
-            if(array[j] <= key) {
-            	// not going inside the while loop, but a compare was done
-            	comps++;
-            }
             /* Move elements of arr[0..i-1], that are 
                greater than key, to one position ahead 
                of their current position */
