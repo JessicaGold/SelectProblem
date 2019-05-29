@@ -90,10 +90,48 @@ public class selectProblems
 		return new Pair<Integer, Integer>(arr[k + 1], comps);
 	}
 	
-	
+	/**
+	 * 
+	 * @param array
+	 * @param k
+	 * @return number of comparisons between elements in arr
+	 * 
+	 * @pre  0 <= k < array.length
+	 * @pre array is not empty
+	 * 
+	 *complexity O(n^2)
+	 */
 	public Pair<Integer, Integer> selectInsertionSort(int [] array, int k)
 	{
-		return new Pair<Integer, Integer>(-1,-1); // to be replaced by student code. (The k'th element,#of comparsion)
+		int n = array.length;
+		int comps = 0;
+        for (int i = 1; i < n; i++) { 
+            int key = array[i]; 
+            int j = i - 1;
+            if(array[j] <= key) {
+            	// not going inside the while loop, but a compare was done
+            	comps++;
+            }
+            /* Move elements of arr[0..i-1], that are 
+               greater than key, to one position ahead 
+               of their current position */
+            while (j >= 0 && array[j] > key) { 
+                array[j + 1] = array[j]; 
+                j = j - 1;
+                // a compare was done
+                comps ++;                
+            }
+            // a compare was still done but did not going inside the while loop
+            // happens when array[j] <= key and j is not -1 
+            if(j != -1) {
+            	comps++;
+            }
+            // finally put the wanted position for our current key
+            array[j + 1] = key; 
+        }
+        //making a new Pair
+        Pair<Integer, Integer> result_pair = new Pair<Integer, Integer>(array[k-1], comps);
+		return result_pair; 
 	}
 	
 	
