@@ -7,7 +7,7 @@ public class selectProblems
 {
 	
 	private static final boolean MIN = true;
-	private static final boolean MAX = false;
+	//private static final boolean MAX = false;
 	
 	/**
 	 * @param arr
@@ -43,7 +43,7 @@ public class selectProblems
 	 */
 	private int recQuickSort(int[] arr, int start, int end)
 	{
-		if(arr.length == 0 || start == end) {
+		if(arr.length == 0 || start >= end) {
 			return 0;
 		}
 		if(end == start + 1) {
@@ -58,7 +58,7 @@ public class selectProblems
 		int left = start;
 		int right = end - 1;
 		swap(arr, pivotIndex, end);
-		while(right >= left) {
+		while(right > left) {
 			if(pivot > arr[left]) {
 				left++;
 			}
@@ -68,8 +68,8 @@ public class selectProblems
 			}
 		}
 		//at this point left is greater than right by 1
-		swap(arr, left, end);
-		return end - start + recQuickSort(arr, left + 1, end) 
+		swap(arr, right, end);
+		return end - start + recQuickSort(arr, left, end) 
 			+ recQuickSort(arr, start, right);
 		
 	}
@@ -87,7 +87,7 @@ public class selectProblems
 	{
 		int[] arr = array.clone();
 		int comps = recQuickSort(arr, 0, arr.length - 1);
-		return new Pair<Integer, Integer>(arr[k + 1], comps);
+		return new Pair<Integer, Integer>(arr[k - 1], comps);
 	}
 	
 	/**
@@ -220,8 +220,8 @@ public class selectProblems
 	{
 		int[] arr = array.clone();
 		int comps = buildHeap(arr, MIN);
-		for(int i = 0; i < k; i++) {
-			comps += deleteFirstFromHeap(arr, array.length - i, MIN).getValue();
+		for(int i = 1; i < k; i++) {
+			comps += deleteFirstFromHeap(arr, array.length - i + 1, MIN).getValue();
 		}
 		return new Pair<Integer, Integer>(arr[0],comps);
 	}
@@ -241,8 +241,8 @@ public class selectProblems
 		if(k == 0) return 0;
 		int comps = 1;
 		int curr = k;
-		while((isMin && arr[curr] > arr[curr / 2]) || 
-				(!(isMin) && arr[curr] < arr[curr / 2])) {
+		while((isMin && arr[curr] < arr[curr / 2]) || 
+				(!(isMin) && arr[curr] > arr[curr / 2])) {
 			swap(arr, curr, curr / 2);
 			curr /= 2;
 			if(curr == 0) break;
@@ -291,21 +291,25 @@ public class selectProblems
 		smallHeap[0] = bigHeap[0];
 		heapSize++;
 		indexes.put(bigHeap[0], 0);
-		for(int i = 0; i < k;i++) {
-				currIndex = (indexes.get(smallHeap[0]) + 1);
-			try {
-				leftNode = bigHeap[currIndex * 2];
-				rightNode = bigHeap[currIndex * 2 + 1];
-				comps += deleteFirstFromHeap(smallHeap, heapSize, MIN).getValue();
-				comps += insertToHeap(smallHeap, heapSize++, leftNode, MIN) + 
-						insertToHeap(smallHeap, heapSize++, rightNode, MIN);
-				indexes.put(leftNode, currIndex * 2);
-				indexes.put(rightNode, currIndex * 2 + 1);
+		for(int i = 1; i < k; i++) {
+			if(bigHeap.length <= currIndex * 2) {
+				comps += deleteFirstFromHeap(smallHeap, heapSize--, MIN).getValue();
+				if(bigHeap.length == currIndex * 2) {
+					comps += insertToHeap(smallHeap, heapSize++, bigHeap[currIndex * 2 - 1], MIN);
+				}
+				
+				break;
 			}
-			catch (NullPointerException e){
-				System.out.println("NullPointerException%n"
-						+ "k seems to be bigger than n, program terminaited");
-			}
+
+			currIndex = (indexes.get(smallHeap[0]) + 1);
+			leftNode = bigHeap[currIndex * 2 - 1];
+			rightNode = bigHeap[currIndex * 2];
+			comps += deleteFirstFromHeap(smallHeap, heapSize--, MIN).getValue();
+			comps += insertToHeap(smallHeap, heapSize++, leftNode, MIN) + 
+					insertToHeap(smallHeap, heapSize++, rightNode, MIN);
+			indexes.put(leftNode, currIndex * 2 - 1);
+			indexes.put(rightNode, currIndex * 2);
+
 		}
 
 		return new Pair<Integer, Integer>(smallHeap[0], comps);
