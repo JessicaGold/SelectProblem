@@ -151,7 +151,6 @@ public class selectProblems
 					(!(isMin) && arr[k] < arr[size - 1])) {
 				swap(arr, k, size - 1);
 			}
-			int notNeeded;
 			return 1;
 		}
 		
