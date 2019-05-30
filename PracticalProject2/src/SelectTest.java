@@ -80,15 +80,26 @@ public class SelectTest {
 		
 	}
 
-	private static int[] randomArray(int n) {
+	public static int[] randomArray(int n) {
 
 		int[] res = new int[n];
 
 		for (int i = 0; i < n; i++) {
-			res[i] = randInt(0, MAX_VALUE);
+			int next = randInt(0, MAX_VALUE);
+			while(numInArray(res, next)) {
+				next = randInt(0, MAX_VALUE);
+			}
+			res[i] = next;
 		}
 
 		return res;
+	}
+	
+	public static boolean numInArray(int[] arr, int num) {
+		for(int elem : arr) {
+			if(num == elem) return true;
+		}
+		return false;
 	}
 
 	private static int randInt(int min, int max) {

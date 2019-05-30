@@ -185,7 +185,7 @@ public class selectProblems
 	private int buildHeap(int[] arr, boolean isMin)
 	{
 		int comps = 0;
-		for(int i = (arr.length) / 2; i >= 0; i--) {
+		for(int i = (arr.length / 2); i >= 0; i--) {
 			comps += heapifyDown(arr, i, arr.length, isMin);
 		}
 		return comps;
@@ -236,16 +236,16 @@ public class selectProblems
 	 * 
 	 * time complexity O(log n) (n here in the parameter size)
 	 */
-	private int heapifyUp(int[] arr, int k, int size, boolean isMin)
+	private int heapifyUp(int[] arr, int k, boolean isMin)
 	{
 		if(k == 0) return 0;
 		int comps = 1;
-		int curr = k;
-		while((isMin && arr[curr] < arr[curr / 2]) || 
-				(!(isMin) && arr[curr] > arr[curr / 2])) {
-			swap(arr, curr, curr / 2);
-			curr /= 2;
-			if(curr == 0) break;
+		int curr = k + 1;
+		while((isMin && arr[curr - 1] < arr[(curr/2) - 1]) || 
+				(!(isMin) && arr[curr - 1] > arr[(curr/2) - 1])) {
+			swap(arr, curr - 1, (curr/2) - 1);
+			curr = curr/2;
+			if(curr == 1) break;
 			comps++;
 		}
 		return comps;
@@ -260,12 +260,13 @@ public class selectProblems
 	 * @param isMin
 	 * @return number of comparisons during runTime
 	 * 
+	 * @pre arr.length > size of heap
 	 * time complexity O(log n) (n here in the parameter size)
 	 */
 	private int insertToHeap(int[] arr, int size, int val, boolean isMin)
 	{
 		arr[size] = val;
-		return  heapifyUp(arr, size, size + 1, isMin);
+		return  heapifyUp(arr, size, isMin);
 	}
 	
 	
@@ -292,16 +293,19 @@ public class selectProblems
 		heapSize++;
 		indexes.put(bigHeap[0], 0);
 		for(int i = 1; i < k; i++) {
+			
+			currIndex = (indexes.get(smallHeap[0]) + 1);
+			
 			if(bigHeap.length <= currIndex * 2) {
 				comps += deleteFirstFromHeap(smallHeap, heapSize--, MIN).getValue();
 				if(bigHeap.length == currIndex * 2) {
 					comps += insertToHeap(smallHeap, heapSize++, bigHeap[currIndex * 2 - 1], MIN);
+					indexes.put(bigHeap[currIndex * 2 - 1], currIndex * 2 - 1);
 				}
 				
-				break;
+				continue;
 			}
 
-			currIndex = (indexes.get(smallHeap[0]) + 1);
 			leftNode = bigHeap[currIndex * 2 - 1];
 			rightNode = bigHeap[currIndex * 2];
 			comps += deleteFirstFromHeap(smallHeap, heapSize--, MIN).getValue();
