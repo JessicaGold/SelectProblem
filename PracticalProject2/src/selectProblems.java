@@ -279,21 +279,36 @@ public class selectProblems
 		int[] bigHeap = array.clone();
 		int comps = buildHeap(bigHeap, MIN);
 		
-		int[] smallHeap = new int[k + 1];
+		int[] smallHeap = new int[k];
 		//HashMap holds the indexes in bigHeap of the values in smallHeap
 		HashMap<Integer, Integer> indexes = new HashMap<Integer, Integer>();
 		
 		int heapSize = 0;
 		int currIndex = 0;
+		int rightNode;
+		int leftNode;
 		
 		smallHeap[0] = bigHeap[0];
 		heapSize++;
 		indexes.put(bigHeap[0], 0);
 		for(int i = 0; i < k;i++) {
-			//continue here
+				currIndex = (indexes.get(smallHeap[0]) + 1);
+			try {
+				leftNode = bigHeap[currIndex * 2];
+				rightNode = bigHeap[currIndex * 2 + 1];
+				comps += deleteFirstFromHeap(smallHeap, heapSize, MIN).getValue();
+				comps += insertToHeap(smallHeap, heapSize++, leftNode, MIN) + 
+						insertToHeap(smallHeap, heapSize++, rightNode, MIN);
+				indexes.put(leftNode, currIndex * 2);
+				indexes.put(rightNode, currIndex * 2 + 1);
+			}
+			catch (NullPointerException e){
+				System.out.println("NullPointerException%n"
+						+ "k seems to be bigger than n, program terminaited");
+			}
 		}
 
-		return new Pair<Integer, Integer>(-1,-1);
+		return new Pair<Integer, Integer>(smallHeap[0], comps);
 	}
 	
 	/**
