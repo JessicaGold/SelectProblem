@@ -108,10 +108,6 @@ public class selectProblems
         for (int i = 1; i < n; i++) { 
             int key = array[i]; 
             int j = i - 1;
-            if(array[j] <= key) {
-            	// not going inside the while loop, but a compare was done
-            	comps++;
-            }
             /* Move elements of arr[0..i-1], that are 
                greater than key, to one position ahead 
                of their current position */
@@ -299,15 +295,110 @@ public class selectProblems
 
 		return new Pair<Integer, Integer>(-1,-1);
 	}
-  
-  public Pair<Integer, Integer> randQuickSelect(int [] array, int k)
-  {
-    return new Pair<Integer, Integer>(-1,-1); // to be replaced by student code. (The k'th element,#of comparsion)
-  }
-  
-  public Pair<Integer, Integer> medOfMedQuickSelect(int [] array, int k)
-  {
-    return new Pair<Integer, Integer>(-1,-1); // to be replaced by student code. (The k'th element,#of comparsion)
-  }
-  
+	
+	/**
+	 * a shell function for the recursive function
+	 * 
+	 * @param array
+	 * @param k
+	 * @return a pair with the kth element - as key, and the number of compares was done - as value
+	 * 
+	 * average time complexity O(n)
+	 * worst case time complexity O(n^2)
+	 */
+	
+	
+	public Pair<Integer, Integer> randQuickSelect(int [] array, int k)
+	{
+		return recursiveRandQuic(array, 0, array.length - 1, k-1, 0);
+	}
+	
+	/**
+	 * the recursive function of Randomized-QuickSelect as learned in class
+	 * 
+	 * @param array
+	 * @param k
+	 * @param array boundaries
+	 * @param number of compares that already done in the recursive loop
+	 * @return a pair with the kth element - as key, and the number of compares was done - as value
+	 * 
+	 * average time complexity O(n)
+	 * worst case time complexity O(n^2)
+	 */
+	
+	public Pair<Integer, Integer> recursiveRandQuic(int[] array, int left, int right, int k, int comp) {
+		if (left == right) { // If the list contains only one element,
+			//making a new Pair
+	        Pair<Integer, Integer> result_pair = new Pair<Integer, Integer>(array[left], comp);// return that element
+			return result_pair; 
+			
+		}
+		
+		// select a pivotIndex between left and right
+		int pivotIndex = randomPivot(left, right);
+		// making a partition and saving the returned pair
+		Pair<Integer, Integer> partition_pair = partition(array, left, right, pivotIndex, 0);
+		// get the pivot index
+		pivotIndex = partition_pair.getKey();
+		// add to compares was done
+		int new_comp = comp + partition_pair.getValue();
+		// The pivot is in its final sorted position
+		if (k == pivotIndex) {
+			//making a new Pair
+	        Pair<Integer, Integer> result_pair = new Pair<Integer, Integer>(array[k], new_comp);// return that element
+			return result_pair; 
+		} else if (k < pivotIndex) {
+			return recursiveRandQuic(array, left, pivotIndex - 1, k, new_comp);
+		} else {
+			return recursiveRandQuic(array, pivotIndex + 1, right, k, new_comp);
+		}
+	}
+	
+	
+	
+	/**
+	 * partitions the given array in such a way that elements at lower indexes should be less than the given pivot element.
+	 * Similarly, elements at higher indexes will be greater or equal than the pivot element
+	 * 
+	 * @param array, his boundaries and the random pivot index 
+	 * @return a pair with pivot new index after the partition - as key, and the number of compares was done - as value
+	 * 
+	 * time complexity O(n)
+	 */
+	public Pair<Integer, Integer> partition(int[] array, int left, int right, int pivotIndex, int comp) {
+		int pivotValue = array[pivotIndex];
+		swap(array, pivotIndex, right); // move pivot to end
+		int storeIndex = left;
+		for(int i = left; i < right; i++) {
+			// we are doing a compare by array[i] < pivotValue
+			comp++;
+			if(array[i] < pivotValue) {
+				swap(array, storeIndex, i);
+				storeIndex++;
+			}
+		}
+		swap(array, right, storeIndex); // Move pivot to its final place
+        //making a new Pair
+        Pair<Integer, Integer> result_pair = new Pair<Integer, Integer>(storeIndex, comp);
+		return result_pair; 
+
+	}
+	
+	/**
+	 * @param array boundaries : left and right  
+	 * @return a random pivot index between the given boundaries
+	 */
+	
+	public int randomPivot(int left, int right) {
+	    Random rand = new Random();
+		int pivot = left + rand.nextInt(right - left);
+	    return pivot;
+	}
+	
+		  
+	public Pair<Integer, Integer> medOfMedQuickSelect(int [] array, int k)
+	{
+		return new Pair<Integer, Integer>(-1,-1); // to be replaced by student code. (The k'th element,#of comparsion)
+	}
+	  
 }
