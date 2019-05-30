@@ -1,5 +1,6 @@
 import javafx.util.Pair;
 import java.util.Random;
+import java.util.Arrays;
 import java.util.HashMap;
 
 
@@ -423,6 +424,60 @@ public class selectProblems
 	public Pair<Integer, Integer> medOfMedQuickSelect(int [] array, int k)
 	{
 		return new Pair<Integer, Integer>(-1,-1); // to be replaced by student code. (The k'th element,#of comparsion)
+	}
+	
+	// Returns k'th smallest element 
+	// in arr[l..r] in worst case 
+	// linear time. ASSUMPTION: ALL  
+	// ELEMENTS IN ARR[] ARE DISTINCT 
+	public Pair<Integer, Integer> Select(int arr[], int comps) 
+	{ 
+    
+        int n = arr.length - 1 ; // Number of elements in arr[l..r] 
+        // if the array length is one than we found our median
+        if(n == 0) {
+        	Pair<Integer, Integer> result = new Pair<Integer, Integer>(arr[0], comps);
+        	return result;
+        }
+  
+        // Divide arr[] in groups of size 5,  
+        // calculate median of every group 
+        //  and store it in median[] array. 
+          int i;
+          int new_comps = 0;
+         // There will be floor((n+4)/5) groups; 
+        int []median = new int[(n + 4) / 5]; 
+        for (i = 0; i < n/5; i++) { 
+        	// create a new array from this 5 elements
+        	int left = i * 5;
+        	int[] array_5 = Arrays.copyOfRange(arr,left, left + 4);
+        	// find the median in each 5 by randQuickSelect
+        	Pair<Integer, Integer> rand_pair = randQuickSelect(array_5, 3);
+            median[i] = rand_pair.getKey();
+            new_comps = comps + rand_pair.getValue();
+        }
+        // For last group with less than 5 elements 
+        if (i*5 < n)  
+        { 
+        	// create a new array from this left elements
+        	int[] last_array = Arrays.copyOfRange(arr,i * 5, n);
+        	// if the size is one then return the only number
+        	// else return the k'th with rank 2
+        	if(last_array.length == 1) {
+        		median[i] = last_array[0];
+        	}
+        	else {
+        		Pair<Integer, Integer> rand_pair = randQuickSelect(last_array, 2);
+                median[i] = rand_pair.getKey();
+                new_comps = comps + rand_pair.getValue();
+        	}  
+            i++; 
+        }  
+        System.out.println(Arrays.toString(median));
+        // Find median of all medians using recursive call. 
+        //recursive call 
+        return Select(median, new_comps);
+  
 	}
 	  
 }
