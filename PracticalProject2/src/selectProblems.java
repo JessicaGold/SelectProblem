@@ -315,7 +315,7 @@ public class selectProblems
 	}
 	
 	/**
-	 * 
+	 * the recursive function of Randomized-QuickSelect as learned in class
 	 * 
 	 * @param array
 	 * @param k
