@@ -2,6 +2,8 @@
 import java.util.Arrays;
 import java.util.concurrent.ThreadLocalRandom;
 
+import javafx.util.Pair;
+
 public class SelectTest {
 
 	private static final int MAX_VALUE = 1000000;
@@ -14,14 +16,23 @@ public class SelectTest {
 		selectProblems s = new selectProblems();
 
 
-		for (int n = 3; n <= MAX_LENGTH; n++) {
+		for (int n = 5; n <= MAX_LENGTH; n++) {
 
 			for (int i = 0; i < NUM_OF_TESTS; i++) {
 				int[] array = randomArray(n);
 				int[] sortedArray = array.clone();
-				Arrays.sort(sortedArray);
+				
+				//select test
+//				Arrays.sort(sortedArray);
+//				System.out.println(Arrays.toString(array));
+//				System.out.println(Arrays.toString(sortedArray));
+//				Pair<Integer, Integer> result = s.Select(array, 0);
+//				System.out.print("my median = ");
+//				System.out.println(result.getKey());
+//				System.out.print("the real median = ");
+//				System.out.println(sortedArray[n/2]);
 
-				for (int k = 1; k <= n; k++) {
+//				for (int k = 1; k <= n; k++) {
 
 //					int actual = s.selectRandQuickSort(array.clone(), k).getKey();
 //					if (actual != sortedArray[k-1]) {
@@ -30,11 +41,11 @@ public class SelectTest {
 //					}
 					
 					
-					int actual = s.selectInsertionSort(array.clone(), k).getKey();
-					if (actual != sortedArray[k-1]) {
-						error("selectInsertionSort", array, actual, sortedArray[k-1], k);
-						return;
-					}
+//					int actual = s.selectInsertionSort(array.clone(), k).getKey();
+//					if (actual != sortedArray[k-1]) {
+//						error("selectInsertionSort", array, actual, sortedArray[k-1], k);
+//						return;
+//					}
 //					
 //					actual = s.selectHeap(array.clone(), k).getKey();
 //					if (actual != sortedArray[k-1]) {
@@ -48,11 +59,11 @@ public class SelectTest {
 //						return;
 //					}
 //					
-					actual = s.randQuickSelect(array.clone(), k).getKey();
-					if (actual != sortedArray[k-1]) {
-						error("randQuickSelect", array, actual, sortedArray[k-1], k);
-						return;
-					}
+//					actual = s.randQuickSelect(array.clone(), k).getKey();
+//					if (actual != sortedArray[k-1]) {
+//						error("randQuickSelect", array, actual, sortedArray[k-1], k);
+//						return;
+//					}
 //					
 //					actual = s.medOfMedQuickSelect(array.clone(), k).getKey();
 //					if (actual != sortedArray[k-1]) {
@@ -60,10 +71,10 @@ public class SelectTest {
 //						return;
 //					}
 					
-				}
-
+//				}
+//				i = NUM_OF_TESTS;
 			}
-
+//			n = MAX_LENGTH;
 		}
 		
 		System.out.println("Done");
