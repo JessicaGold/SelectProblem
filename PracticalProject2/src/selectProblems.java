@@ -423,49 +423,25 @@ public class selectProblems
 		  
 	public Pair<Integer, Integer> medOfMedQuickSelect(int [] array, int k)
 	{
-		return recursiveMedOfMed(array, 0, array.length - 1, k-1, 0);
+		return Select(array, 0, array.length - 1, 0, k);
 	}
 	
-	
-	public Pair<Integer, Integer> recursiveMedOfMed(int[] array, int left, int right, int k, int comp) {
-		if (left == right) { // If the list contains only one element,
-			//making a new Pair
-	        Pair<Integer, Integer> result_pair = new Pair<Integer, Integer>(array[left], comp);// return that element
-			return result_pair; 
-			
-		}
-		// copying only the wanted cut from the array
-		int[] cut_array = Arrays.copyOfRange(array, left, right + 1);
-		// select medofmed as a pivot 
-		Pair<Integer, Integer> select_pair = Select(cut_array, 0);
-		int pivotIndex = select_pair.getKey();
-		// making a partition and saving the returned pair
-		Pair<Integer, Integer> partition_pair = partition(array, left, right, pivotIndex, 0);
-		// get the pivot index
-		pivotIndex = partition_pair.getKey();
-		// add to compares was done
-		int new_comp = comp + partition_pair.getValue() + select_pair.getValue();
-		// The pivot is in its final sorted position
-		if (k == pivotIndex) {
-			//making a new Pair
-	        Pair<Integer, Integer> result_pair = new Pair<Integer, Integer>(array[k], new_comp);// return that element
-			return result_pair; 
-		} else if (k < pivotIndex) {
-			return recursiveMedOfMed(array, left, pivotIndex - 1, k, new_comp);
-		} else {
-			return recursiveMedOfMed(array, pivotIndex + 1, right, k, new_comp);
-		}
-	}
-	
-	
-	// Returns k'th smallest element 
-	// in arr[l..r] in worst case 
-	// linear time. ASSUMPTION: ALL  
-	// ELEMENTS IN ARR[] ARE DISTINCT 
-	public Pair<Integer, Integer> Select(int arr[], int comps) 
+	/**
+	 * the recursive function of medOfMedQuickSelect as learned in class
+	 * 
+	 * @param array
+	 * @param k
+	 * @param array boundaries
+	 * @param number of compares that already done in the recursive loop
+	 * @return a pair with the kth element - as key, and the number of compares was done - as value
+	 * 
+	 * @pre all elements in arr are distinct
+	 * worst case time complexity O(n)
+	 */ 
+	public Pair<Integer, Integer> Select(int arr[], int left, int right, int comps, int k) 
 	{ 
     
-        int n = arr.length - 1 ; // Number of elements in arr[l..r] 
+        int n = right - left ; // Number of elements in arr[l..r] - 1
         // if the array length is one than we found our median
         if(n == 0) {
         	Pair<Integer, Integer> result = new Pair<Integer, Integer>(arr[0], comps);
@@ -476,42 +452,80 @@ public class selectProblems
         // calculate median of every group 
         //  and store it in median[] array. 
           int i;
-          int right = 4;
+          int right_5 = left + 4;
           int new_comps = 0;
          // There will be floor((n+4)/5) groups; 
         int []median = new int[(n + 1 + 4) / 5]; 
-        for (i = 0; i <= (n) / 5 && right <= n; i++) { 
-        	// create a new array from this 5 elements
-        	int[] array_5 = Arrays.copyOfRange(arr,i * 5, right + 1);
-        	// find the median in each 5 by randQuickSelect
-        	Pair<Integer, Integer> rand_pair = randQuickSelect(array_5, 3);
-            median[i] = rand_pair.getKey();
-            new_comps = comps + rand_pair.getValue();
-         // update right
-        	right = ( i + 1 ) * 5 + 4;
+        for (i = 0; i <= (n) / 5 && right_5 <= n; i++) {
+        	// sort this 5 element with randQuickSort
+        	// and find the median
+        	// all of this in fins median func
+        	Pair<Integer, Integer> find_median_pair = findMedian(arr, i * 5 + left, right_5);
+        	new_comps = comps + find_median_pair.getValue();
+        	median[i] = find_median_pair.getKey();
+        	// update right_5
+        	right_5 = ( i + 1 ) * 5 + left + 4;
         }
         // For last group with less than 5 elements 
-        if (i*5 < n)  
+        if (i * 5 + left <= n)  
         { 
-        	// create a new array from this left elements
-        	int[] last_array = Arrays.copyOfRange(arr,i * 5, n + 1);
+        	int num_leftovers = n - ( i * 5 + left );
         	// if the size is one then return the only number
         	// else return the k'th with rank 2
-        	if(last_array.length == 1) {
-        		median[i] = last_array[0];
+        	if(num_leftovers == 1) {
+        		median[i] = arr[n];
         	}
         	else {
-        		Pair<Integer, Integer> rand_pair = randQuickSelect(last_array, 2);
-                median[i] = rand_pair.getKey();
-                new_comps = comps + rand_pair.getValue();
+        		Pair<Integer, Integer> find_median_pair = findMedian(arr, i * 5 + left, n);;
+                median[i] = find_median_pair.getKey();
+                new_comps = new_comps + find_median_pair.getValue();
         	}  
             i++; 
         }  
-//        System.out.println(Arrays.toString(median));
-        // Find median of all medians using recursive call. 
-        //recursive call 
-        return Select(median, new_comps);
+        
+        // select recursive call. 
+        Pair<Integer, Integer> select_pair = Select(median, 0, median.length - 1, new_comps, k);
+        // med of med value
+        int MedOfMed = select_pair.getKey();
+        // total num of compares was done in select
+        int total_comps = select_pair.getValue();
+        // search for MedOfMed index in the array
+        int medIndex = 0;
+        for(int j = 0; j < arr.length ; j++) {
+        	// compare is done
+        	total_comps++;
+        	if(arr[j] == MedOfMed) {
+        		medIndex = j;
+        		break;
+        	}
+        }
+
+		// making a partition and saving the returned pair
+		Pair<Integer, Integer> partition_pair = partition(arr, 0, arr.length - 1, medIndex, 0);
+		// get the position of medofmed value in sorted array
+		int pos = partition_pair.getKey();
+		// add to compares was done
+		total_comps = total_comps + partition_pair.getValue();
+		// The pivot is in its final sorted position
+		if (k == pos) {
+			//making a new Pair
+	        Pair<Integer, Integer> result_pair = new Pair<Integer, Integer>(arr[k], total_comps);// return that element
+			return result_pair; 
+		} else if (k < pos) {
+			return Select(arr, left, pos - 1, total_comps, k);
+		} else {
+			return Select(arr, pos + 1, right, total_comps, k);
+		}
+        
   
+	}
+	
+	
+	public Pair<Integer, Integer> findMedian(int[] arr, int left, int right){
+		int comps = recQuickSort(arr, left, right);
+		int original_length = right - left + 1;
+		int kth = arr[left + ( original_length / 2 )];
+		return new Pair<Integer, Integer>(kth, comps);
 	}
 	  
 }

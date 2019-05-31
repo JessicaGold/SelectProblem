@@ -30,7 +30,7 @@ public class SelectTest {
 				//SELECT test
 //				System.out.println(Arrays.toString(array));
 //				System.out.println(Arrays.toString(sortedArray));
-//				Pair<Integer, Integer> result = s.Select(array, 0);
+//				Pair<Integer, Integer> result = s.Select(array, 0, array.length - 1 ,0);
 //				System.out.print("my median = ");
 //				System.out.println(result.getKey());
 //				System.out.print("the real median = ");
@@ -51,21 +51,13 @@ public class SelectTest {
 //						error("selectInsertionSort", array, actual, sortedArray[k-1], k);
 //						return;
 //					}
-//					System.out.print("not sort :");
-//					System.out.println(Arrays.toString(array));
-//					System.out.print("their sort :");
-//					System.out.println(Arrays.toString(sortedArray));
-//					System.out.print("my sort :");
-//					System.out.print("my k :");
-//					System.out.println(actual);
-//					System.out.print("their k :");
-//					System.out.println(sortedArray[k-1]);
-					Pair<Integer, Integer> resultp = s.selectInsertionSort(array.clone(), k);
-					int actual = resultp.getKey();
-					if (actual != sortedArray[k-1]) {
-						error("selectInsertionSort", array, actual, sortedArray[k-1], k);
-						return;
-					}
+
+//					Pair<Integer, Integer> resultp = s.selectInsertionSort(array.clone(), k);
+//					int actual = resultp.getKey();
+//					if (actual != sortedArray[k-1]) {
+//						error("selectInsertionSort", array, actual, sortedArray[k-1], k);
+//						return;
+//					}
 
 //					
 //					actual = s.selectHeap(array.clone(), k).getKey();
@@ -93,14 +85,14 @@ public class SelectTest {
 //						return;
 //					}
 //					
-					actual = s.randQuickSelect(array.clone(), k).getKey();
-					if (actual != sortedArray[k-1]) {
-						error("randQuickSelect", array, actual, sortedArray[k-1], k);
-						return;
-					}
+//					actual = s.randQuickSelect(array.clone(), k).getKey();
+//					if (actual != sortedArray[k-1]) {
+//						error("randQuickSelect", array, actual, sortedArray[k-1], k);
+//						return;
+//					}
 
 //					
-					actual = s.medOfMedQuickSelect(array.clone(), k).getKey();
+					int actual = s.medOfMedQuickSelect(array.clone(), k).getKey();
 					if (actual != sortedArray[k-1]) {
 						error("medOfMedQuickSelect", array, actual, sortedArray[k-1], k);
 						return;
