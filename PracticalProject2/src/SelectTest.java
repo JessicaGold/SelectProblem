@@ -16,14 +16,18 @@ public class SelectTest {
 		selectProblems s = new selectProblems();
 
 
-		for (int n = 5; n <= MAX_LENGTH; n++) {
+		for (int n = 1; n <= MAX_LENGTH; n++) {
 
 			for (int i = 0; i < NUM_OF_TESTS; i++) {
 				int[] array = randomArray(n);
 				int[] sortedArray = array.clone();
+				Arrays.sort(sortedArray);
 				
-				//select test
-//				Arrays.sort(sortedArray);
+				
+				
+				
+				
+				//SELECT test
 //				System.out.println(Arrays.toString(array));
 //				System.out.println(Arrays.toString(sortedArray));
 //				Pair<Integer, Integer> result = s.Select(array, 0);
@@ -34,25 +38,34 @@ public class SelectTest {
 
 				for (int k = 1; k <= n; k++) {
 
-					int actual = s.selectRandQuickSort(array.clone(), k).getKey();
-					if (actual != sortedArray[k-1]) {
-						error("selectRandQuickSort", array, actual, sortedArray[k-1], k);
-						return;
-					}
+//					int actual = s.selectRandQuickSort(array.clone(), k).getKey();
+//					if (actual != sortedArray[k-1]) {
+//						error("selectRandQuickSort", array, actual, sortedArray[k-1], k);
+//						return;
+//					}
 					
 					
-
-					/*int actual = s.selectInsertionSort(array.clone(), k).getKey();
-					if (actual != sortedArray[k-1]) {
-						error("selectInsertionSort", array, actual, sortedArray[k-1], k);
-						return;
-					}*/
 
 //					int actual = s.selectInsertionSort(array.clone(), k).getKey();
 //					if (actual != sortedArray[k-1]) {
 //						error("selectInsertionSort", array, actual, sortedArray[k-1], k);
 //						return;
 //					}
+//					System.out.print("not sort :");
+//					System.out.println(Arrays.toString(array));
+//					System.out.print("their sort :");
+//					System.out.println(Arrays.toString(sortedArray));
+//					System.out.print("my sort :");
+//					System.out.print("my k :");
+//					System.out.println(actual);
+//					System.out.print("their k :");
+//					System.out.println(sortedArray[k-1]);
+					Pair<Integer, Integer> resultp = s.selectInsertionSort(array.clone(), k);
+					int actual = resultp.getKey();
+					if (actual != sortedArray[k-1]) {
+						error("selectInsertionSort", array, actual, sortedArray[k-1], k);
+						return;
+					}
 
 //					
 //					actual = s.selectHeap(array.clone(), k).getKey();
@@ -62,11 +75,11 @@ public class SelectTest {
 //					}
 //					
 
-					actual = s.selectDoubleHeap(array.clone(), k).getKey();
-					if (actual != sortedArray[k-1]) {
-						error("selectDoubleHeap", array, actual, sortedArray[k-1], k);
-						return;
-					}
+//					actual = s.selectDoubleHeap(array.clone(), k).getKey();
+//					if (actual != sortedArray[k-1]) {
+//						error("selectDoubleHeap", array, actual, sortedArray[k-1], k);
+//						return;
+//					}
 					
 					/*actual = s.randQuickSelect(array.clone(), k).getKey();
 					if (actual != sortedArray[k-1]) {
@@ -80,23 +93,23 @@ public class SelectTest {
 //						return;
 //					}
 //					
-//					actual = s.randQuickSelect(array.clone(), k).getKey();
-//					if (actual != sortedArray[k-1]) {
-//						error("randQuickSelect", array, actual, sortedArray[k-1], k);
-//						return;
-//					}
+					actual = s.randQuickSelect(array.clone(), k).getKey();
+					if (actual != sortedArray[k-1]) {
+						error("randQuickSelect", array, actual, sortedArray[k-1], k);
+						return;
+					}
 
 //					
-//					actual = s.medOfMedQuickSelect(array.clone(), k).getKey();
-//					if (actual != sortedArray[k-1]) {
-//						error("medOfMedQuickSelect", array, actual, sortedArray[k-1], k);
-//						return;
-//					}
+					actual = s.medOfMedQuickSelect(array.clone(), k).getKey();
+					if (actual != sortedArray[k-1]) {
+						error("medOfMedQuickSelect", array, actual, sortedArray[k-1], k);
+						return;
+					}
 					
 				}
-				i = NUM_OF_TESTS;
+//				i = NUM_OF_TESTS;
 			}
-			n = MAX_LENGTH;
+//			n = MAX_LENGTH;
 		}
 		
 		System.out.println("Done");

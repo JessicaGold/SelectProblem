@@ -125,7 +125,7 @@ public class selectProblems
             	comps++;
             }
             // finally put the wanted position for our current key
-            array[j + 1] = key; 
+            array[j + 1] = key;
         }
         //making a new Pair
         Pair<Integer, Integer> result_pair = new Pair<Integer, Integer>(array[k-1], comps);
@@ -423,8 +423,40 @@ public class selectProblems
 		  
 	public Pair<Integer, Integer> medOfMedQuickSelect(int [] array, int k)
 	{
-		return new Pair<Integer, Integer>(-1,-1); // to be replaced by student code. (The k'th element,#of comparsion)
+		return recursiveMedOfMed(array, 0, array.length - 1, k-1, 0);
 	}
+	
+	
+	public Pair<Integer, Integer> recursiveMedOfMed(int[] array, int left, int right, int k, int comp) {
+		if (left == right) { // If the list contains only one element,
+			//making a new Pair
+	        Pair<Integer, Integer> result_pair = new Pair<Integer, Integer>(array[left], comp);// return that element
+			return result_pair; 
+			
+		}
+		// copying only the wanted cut from the array
+		int[] cut_array = Arrays.copyOfRange(array, left, right + 1);
+		// select medofmed as a pivot 
+		Pair<Integer, Integer> select_pair = Select(cut_array, 0);
+		int pivotIndex = select_pair.getKey();
+		// making a partition and saving the returned pair
+		Pair<Integer, Integer> partition_pair = partition(array, left, right, pivotIndex, 0);
+		// get the pivot index
+		pivotIndex = partition_pair.getKey();
+		// add to compares was done
+		int new_comp = comp + partition_pair.getValue() + select_pair.getValue();
+		// The pivot is in its final sorted position
+		if (k == pivotIndex) {
+			//making a new Pair
+	        Pair<Integer, Integer> result_pair = new Pair<Integer, Integer>(array[k], new_comp);// return that element
+			return result_pair; 
+		} else if (k < pivotIndex) {
+			return recursiveMedOfMed(array, left, pivotIndex - 1, k, new_comp);
+		} else {
+			return recursiveMedOfMed(array, pivotIndex + 1, right, k, new_comp);
+		}
+	}
+	
 	
 	// Returns k'th smallest element 
 	// in arr[l..r] in worst case 
@@ -444,23 +476,25 @@ public class selectProblems
         // calculate median of every group 
         //  and store it in median[] array. 
           int i;
+          int right = 4;
           int new_comps = 0;
          // There will be floor((n+4)/5) groups; 
-        int []median = new int[(n + 4) / 5]; 
-        for (i = 0; i < n/5; i++) { 
+        int []median = new int[(n + 1 + 4) / 5]; 
+        for (i = 0; i <= (n) / 5 && right <= n; i++) { 
         	// create a new array from this 5 elements
-        	int left = i * 5;
-        	int[] array_5 = Arrays.copyOfRange(arr,left, left + 4);
+        	int[] array_5 = Arrays.copyOfRange(arr,i * 5, right + 1);
         	// find the median in each 5 by randQuickSelect
         	Pair<Integer, Integer> rand_pair = randQuickSelect(array_5, 3);
             median[i] = rand_pair.getKey();
             new_comps = comps + rand_pair.getValue();
+         // update right
+        	right = ( i + 1 ) * 5 + 4;
         }
         // For last group with less than 5 elements 
         if (i*5 < n)  
         { 
         	// create a new array from this left elements
-        	int[] last_array = Arrays.copyOfRange(arr,i * 5, n);
+        	int[] last_array = Arrays.copyOfRange(arr,i * 5, n + 1);
         	// if the size is one then return the only number
         	// else return the k'th with rank 2
         	if(last_array.length == 1) {
@@ -473,7 +507,7 @@ public class selectProblems
         	}  
             i++; 
         }  
-        System.out.println(Arrays.toString(median));
+//        System.out.println(Arrays.toString(median));
         // Find median of all medians using recursive call. 
         //recursive call 
         return Select(median, new_comps);
