@@ -423,7 +423,7 @@ public class selectProblems
 		  
 	public Pair<Integer, Integer> medOfMedQuickSelect(int [] array, int k)
 	{
-		return Select(array, 0, array.length - 1, 0, k);
+		return Select(array, 0, array.length - 1, k, 0);
 	}
 	
 	/**
@@ -438,94 +438,100 @@ public class selectProblems
 	 * @pre all elements in arr are distinct
 	 * worst case time complexity O(n)
 	 */ 
-	public Pair<Integer, Integer> Select(int arr[], int left, int right, int comps, int k) 
-	{ 
-    
-        int n = right - left ; // Number of elements in arr[l..r] - 1
-        // if the array length is one than we found our median
-        if(n == 0) {
-        	Pair<Integer, Integer> result = new Pair<Integer, Integer>(arr[0], comps);
-        	return result;
-        }
-  
-        // Divide arr[] in groups of size 5,  
-        // calculate median of every group 
-        //  and store it in median[] array. 
-          int i;
-          int right_5 = left + 4;
-          int new_comps = 0;
-         // There will be floor((n+4)/5) groups; 
-        int []median = new int[(n + 1 + 4) / 5]; 
-        for (i = 0; i <= (n) / 5 && right_5 <= n; i++) {
-        	// sort this 5 element with randQuickSort
-        	// and find the median
-        	// all of this in fins median func
-        	Pair<Integer, Integer> find_median_pair = findMedian(arr, i * 5 + left, right_5);
-        	new_comps = comps + find_median_pair.getValue();
-        	median[i] = find_median_pair.getKey();
-        	// update right_5
-        	right_5 = ( i + 1 ) * 5 + left + 4;
-        }
-        // For last group with less than 5 elements 
-        if (i * 5 + left <= n)  
-        { 
-        	int num_leftovers = n - ( i * 5 + left );
-        	// if the size is one then return the only number
-        	// else return the k'th with rank 2
-        	if(num_leftovers == 1) {
-        		median[i] = arr[n];
-        	}
-        	else {
-        		Pair<Integer, Integer> find_median_pair = findMedian(arr, i * 5 + left, n);;
-                median[i] = find_median_pair.getKey();
-                new_comps = new_comps + find_median_pair.getValue();
-        	}  
-            i++; 
-        }  
-        
-        // select recursive call. 
-        Pair<Integer, Integer> select_pair = Select(median, 0, median.length - 1, new_comps, k);
-        // med of med value
-        int MedOfMed = select_pair.getKey();
-        // total num of compares was done in select
-        int total_comps = select_pair.getValue();
-        // search for MedOfMed index in the array
-        int medIndex = 0;
-        for(int j = 0; j < arr.length ; j++) {
-        	// compare is done
-        	total_comps++;
-        	if(arr[j] == MedOfMed) {
-        		medIndex = j;
-        		break;
-        	}
-        }
-
-		// making a partition and saving the returned pair
-		Pair<Integer, Integer> partition_pair = partition(arr, 0, arr.length - 1, medIndex, 0);
-		// get the position of medofmed value in sorted array
-		int pos = partition_pair.getKey();
-		// add to compares was done
-		total_comps = total_comps + partition_pair.getValue();
-		// The pivot is in its final sorted position
-		if (k == pos) {
-			//making a new Pair
-	        Pair<Integer, Integer> result_pair = new Pair<Integer, Integer>(arr[k], total_comps);// return that element
-			return result_pair; 
-		} else if (k < pos) {
-			return Select(arr, left, pos - 1, total_comps, k);
-		} else {
-			return Select(arr, pos + 1, right, total_comps, k);
-		}
-        
-  
-	}
-	
-	
-	public Pair<Integer, Integer> findMedian(int[] arr, int left, int right){
-		int comps = recQuickSort(arr, left, right);
-		int original_length = right - left + 1;
-		int kth = arr[left + ( original_length / 2 )];
-		return new Pair<Integer, Integer>(kth, comps);
-	}
+	public Pair<Integer, Integer> Select(int[] arr, int l, int r, int k, int comps){
+		{ 
+		     
+	        int n = r-l+1; // Number of elements in arr[l..r] 
 	  
+	        // Divide arr[] in groups of size 5, calculate median 
+	        // of every group and store it in median[] array. 
+	        int i; 
+	        int[] median = new int[(n+4)/5]; // There will be floor((n+4)/5) groups; 
+	        for (i=0; i< n / 5; i++) { 
+	        	// sort this five
+	        	// sort like insertion sort
+	            for (int b = l + i * 5 + 1 ; b < l + i * 5 + 5; b++) { 
+	                int key = arr[b]; 
+	                int j = b - 1;
+	                while (j >= i * 5 && arr[j] > key) { 
+	                    arr[j + 1] = arr[j]; 
+	                    j = j - 1;
+	                    // a compare was done
+	                    comps ++;                
+	                }
+	                // a compare was still done but did not going inside the while loop
+	                // happens when array[j] <= key and j is not -1 
+	                if(j != l + i * 5 - 1) {
+	                	comps++;
+	                }
+	                // finally put the wanted position for our current key
+	                arr[j + 1] = key;
+	            }
+	            median[i] = arr[l + i * 5 + 2]; 
+	        }
+	        if (i*5 < n) //For last group with less than 5 elements 
+	        { 
+	        	// sort this five
+	        	// sort like insertion sort
+	            for (int b = l + i * 5 + 1; b < r + 1; b++) { 
+	                int key = arr[b]; 
+	                int j = b - 1;
+	                while (j >= i * 5 && arr[j] > key) { 
+	                    arr[j + 1] = arr[j]; 
+	                    j = j - 1;
+	                    // a compare was done
+	                    comps ++;                
+	                }
+	                // a compare was still done but did not going inside the while loop
+	                // happens when array[j] <= key and j is not -1 
+	                if(j != l + i * 5 - 1) {
+	                	comps++;
+	                }
+	                // finally put the wanted position for our current key
+	                arr[j + 1] = key;
+	            }
+	            median[i] = arr[l + i * 5 + (r - l - i * 5) / 2];  
+	            i++; 
+	        }     
+	  
+	        // Find median of all medians using recursive call. 
+	        // If median[] has only one element, then no need 
+	        // of recursive call 
+	        int medOfMed = 0;
+	        if (i == 1) {
+	        	medOfMed = median[i - 1];
+	        }
+	        else {
+	        	Pair<Integer, Integer> select = Select(median, 0, i - 1, i/2, 0);
+	        	comps = comps + select.getValue();
+	        	medOfMed = select.getKey();
+	        }
+	        
+	        // find index of med of med
+	        int MedIndex = 0;
+	        for(int m = l ; m <= r ; m++) {
+	        	if(arr[m] == medOfMed) {
+	        		MedIndex = m;
+	        		break;
+	        	}
+	        }
+	        // Partition the array around a random element and 
+	        // get position of pivot element in sorted array 
+	        Pair<Integer, Integer> partition = partition(arr, l, r, MedIndex, 0); 
+	        int pos = partition.getKey();
+	        comps = comps + partition.getValue();
+	  
+	        // If position is same as k 
+	        if (pos-l == k-1) {
+//	        	System.out.println(arr[pos]);
+	        	return new Pair<Integer, Integer>(arr[pos], comps);
+	        }
+	        if (pos-l > k-1)  // If position is more, recur for left 
+	            return Select(arr, l, pos-1, k, comps); 
+	  
+	        // Else recur for right subarray 
+	        return Select(arr, pos+1, r, k-pos+l-1, comps); 
+	    } 
+	  
+	}	  
 }
