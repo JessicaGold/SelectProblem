@@ -103,9 +103,12 @@ public class selectProblems
 	 * 
 	 *complexity O(n^2)
 	 */
-	public Pair<Integer, Integer> selectInsertionSort(int [] array, int k)
+	public Pair<Integer, Integer> selectInsertionSort(int [] arr, int k)
 	{
-		int n = array.length;
+		
+		int n = arr.length;
+		int[] array = new int[n];
+		System.arraycopy(arr, 0, array, 0, n);
 		int comps = 0;
         for (int i = 1; i < n; i++) { 
             int key = array[i]; 

@@ -86,19 +86,18 @@ public class Experiments {
 			doRandExperiment(s, mtd);
 			return;
 		}
-		int[] array;
-		int k;
-		int n;
 		for(int i = 1; i < 11; i++) {
-			n = i * MAX_VALUE;
-			array = randomArray(n);
-			k = 1;
+			int n = 10000 * i;
+			int[] array = randomArray(n);
 			for(int j = 0; j < 11; j++) {
+				int k = 1 + j * n / 10;
+				if(k > n) {
+					break;
+				}
 				System.out.println("Number of comparisons for k: " + k +
-						"in array size " + n);
-				System.out.println("using " + methodToString(mtd) + ":");
+						" in array size " + n);
+				System.out.print("using " + methodToString(mtd) + ":");
 				System.out.println(runFunc(array, k, s, mtd));
-				k += n/10;
 			}
 		}
 	}
@@ -120,7 +119,7 @@ public class Experiments {
 				}
 				avg /= 10;
 				System.out.println("Number of comparisons for k: " + k +
-						"in array size " + n);
+						" in array size " + n);
 				System.out.println("using " + methodToString(mtd) + 
 						" avarage over 10 atempts:");
 				System.out.println(avg);
@@ -133,6 +132,8 @@ public class Experiments {
 	
 	public static void main(String[] args) {
 		//run the function doExperiment
+		selectProblems s = new selectProblems();
+		doExperiment(s, method.selectInsertionSort);
 	}
 	
 }
