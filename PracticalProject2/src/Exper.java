@@ -5,9 +5,8 @@ import javafx.util.Pair;
 
 public class Exper {
 	private static final int MAX_VALUE = 1000000;
-	private static final int MAX_LENGTH = 100;
-	private static final int NUM_OF_TESTS = 20;
 	public static void main(String[] args) {
+		// good only for deterministic functions
 		for(int i = 1 ; i < 11 ; i++) {
 			int n = 10000 * i;
 			int[] array = randomArray(n);
@@ -18,7 +17,7 @@ public class Exper {
 				}
 				selectProblems s = new selectProblems();
 				System.out.print("i:"+ i + "||" + "n:" + n + "||" + "j:" + j + "||" + "k:" + k + "|| #compares ");
-				Pair<Integer, Integer> p = s.selectInsertionSort(array, k);
+				Pair<Integer, Integer> p = s.medOfMedQuickSelect(array, k);
 				System.out.println(p.getValue());
 			}
 		}

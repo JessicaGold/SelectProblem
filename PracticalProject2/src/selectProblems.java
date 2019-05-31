@@ -331,6 +331,9 @@ public class selectProblems
 	 * @param k
 	 * @return a pair with the kth element - as key, and the number of compares was done - as value
 	 * 
+	 * @pre  0 <= k < array.length
+	 * @pre array is not empty
+	 * 
 	 * average time complexity O(n)
 	 * worst case time complexity O(n^2)
 	 */
@@ -423,9 +426,25 @@ public class selectProblems
 	    return pivot;
 	}
 	
+	/**
+	 * a shell function for the recursive function
+	 * 
+	 * @param array
+	 * @param k
+	 * @return a pair with the kth element - as key, and the number of compares was done - as value
+	 * 
+	 * @pre  0 <= k < array.length
+	 * @pre array is not empty
+	 * 
+	 * worst case time complexity O(n)
+	 */
+	
 		  
-	public Pair<Integer, Integer> medOfMedQuickSelect(int [] array, int k)
+	public Pair<Integer, Integer> medOfMedQuickSelect(int [] arr, int k)
 	{
+		int n = arr.length;
+		int[] array = new int[n];
+		System.arraycopy(arr, 0, array, 0, n);
 		return Select(array, 0, array.length - 1, k, 0);
 	}
 	
