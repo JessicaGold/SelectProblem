@@ -482,13 +482,15 @@ public class selectProblems
 	                    comps ++;                
 	                }
 	                // a compare was still done but did not going inside the while loop
-	                // happens when array[j] <= key and j is not -1 
+	                // happens when array[j] <= key and j is not l + i * 5 - 1 
+	                // -1 the starting point
 	                if(j != l + i * 5 - 1) {
 	                	comps++;
 	                }
 	                // finally put the wanted position for our current key
 	                arr[j + 1] = key;
 	            }
+	            // the median of a 5 element is the elemnent in place #2
 	            median[i] = arr[l + i * 5 + 2]; 
 	        }
 	        if (i*5 < n) //For last group with less than 5 elements 
@@ -505,14 +507,14 @@ public class selectProblems
 	                    comps ++;                
 	                }
 	                // a compare was still done but did not going inside the while loop
-	                // happens when array[j] <= key and j is not -1 
+	                // happens when array[j] <= key and j is not l + i * 5 - 1 
 	                if(j != l + i * 5 - 1) {
 	                	comps++;
 	                }
 	                // finally put the wanted position for our current key
 	                arr[j + 1] = key;
 	            }
-	            median[i] = arr[l + i * 5 + (r - l - i * 5) / 2];  
+	            median[i] = arr[l + i * 5 + (r - l - i * 5 ) / 2];  
 	            i++; 
 	        }     
 	  
