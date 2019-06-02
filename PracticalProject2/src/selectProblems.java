@@ -145,7 +145,7 @@ public class selectProblems
 	 * 
 	 * time complexity O(logn) (n here in the parameter size)
 	 */
-	private int heapifyDown(int[] arr, int k, int size, boolean isMin)
+	private int heapifyDown(int[] arr, int k, int size,int[] indx, boolean isMin)
 	{
 		int ordIndx = k + 1;
 		if(size < 2*ordIndx) {
@@ -155,6 +155,9 @@ public class selectProblems
 			if((isMin && arr[k] > arr[size - 1]) || 
 					(!(isMin) && arr[k] < arr[size - 1])) {
 				swap(arr, k, size - 1);
+				if(indx != null) {
+					swap(indx, k, size - 1);
+				}
 			}
 			return 1;
 		}
@@ -174,7 +177,10 @@ public class selectProblems
 		if(!(isMin) && parr >= arr[nextNodeIndex]) return 2;
 		
 		swap(arr, k, nextNodeIndex);
-		return 2 + heapifyDown(arr, nextNodeIndex, size, isMin);
+		if(indx != null) {
+			swap(indx, k, nextNodeIndex);
+		}
+		return 2 + heapifyDown(arr, nextNodeIndex, size, indx, isMin);
 		
 	}
 	
@@ -191,7 +197,7 @@ public class selectProblems
 	{
 		int comps = 0;
 		for(int i = (arr.length / 2); i >= 0; i--) {
-			comps += heapifyDown(arr, i, arr.length, isMin);
+			comps += heapifyDown(arr, i, arr.length, null, isMin);
 		}
 		return comps;
 	}
@@ -205,11 +211,14 @@ public class selectProblems
 	 * 
 	 * time complexity O(logn) (n here in the parameter size)
 	 */
-	private Pair<Integer, Integer> deleteFirstFromHeap(int[] arr, int size, boolean isMin)
+	private Pair<Integer, Integer> deleteFirstFromHeap(int[] arr, int size, int[] indx, boolean isMin)
 	{
 		int res = arr[0];
 		swap(arr, 0, size - 1);
-		int comps = heapifyDown(arr, 0, size - 1, isMin);
+		if(indx != null) {
+			swap(indx, 0, size - 1);
+		}
+		int comps = heapifyDown(arr, 0, size - 1, indx, isMin);
 		return new Pair<Integer, Integer>(res, comps);
 	}
   
@@ -226,7 +235,7 @@ public class selectProblems
 		int[] arr = array.clone();
 		int comps = buildHeap(arr, MIN);
 		for(int i = 1; i < k; i++) {
-			comps += deleteFirstFromHeap(arr, array.length - i + 1, MIN).getValue();
+			comps += deleteFirstFromHeap(arr, array.length - i + 1, null, MIN).getValue();
 		}
 		return new Pair<Integer, Integer>(arr[0],comps);
 	}
@@ -241,7 +250,7 @@ public class selectProblems
 	 * 
 	 * time complexity O(log n) (n here in the parameter size)
 	 */
-	private int heapifyUp(int[] arr, int k, boolean isMin)
+	private int heapifyUp(int[] arr, int k, int[] indx, boolean isMin)
 	{
 		if(k == 0) return 0;
 		int comps = 1;
@@ -249,6 +258,9 @@ public class selectProblems
 		while((isMin && arr[curr - 1] < arr[(curr/2) - 1]) || 
 				(!(isMin) && arr[curr - 1] > arr[(curr/2) - 1])) {
 			swap(arr, curr - 1, (curr/2) - 1);
+			if(indx != null) {
+				swap(indx, curr - 1, (curr/2) - 1);
+			}
 			curr = curr/2;
 			if(curr == 1) break;
 			comps++;
@@ -268,10 +280,10 @@ public class selectProblems
 	 * @pre arr.length > size of heap
 	 * time complexity O(log n) (n here in the parameter size)
 	 */
-	private int insertToHeap(int[] arr, int size, int val, boolean isMin)
+	private int insertToHeap(int[] arr, int size, int val, int[] indx, boolean isMin)
 	{
 		arr[size] = val;
-		return  heapifyUp(arr, size, isMin);
+		return  heapifyUp(arr, size, indx, isMin);
 	}
 	
 	
@@ -286,8 +298,8 @@ public class selectProblems
 		int comps = buildHeap(bigHeap, MIN);
 		
 		int[] smallHeap = new int[k];
-		//HashMap holds the indexes in bigHeap of the values in smallHeap
-		HashMap<Integer, Integer> indexes = new HashMap<Integer, Integer>();
+
+		int[] indexes = new int[k];
 		
 		int heapSize = 0;
 		int currIndex = 0;
@@ -296,16 +308,16 @@ public class selectProblems
 		
 		smallHeap[0] = bigHeap[0];
 		heapSize++;
-		indexes.put(bigHeap[0], 0);
+		indexes[0] = 0;
 		for(int i = 1; i < k; i++) {
 			
-			currIndex = (indexes.get(smallHeap[0]) + 1);
+			currIndex = (indexes[0] + 1);
 			
 			if(bigHeap.length <= currIndex * 2) {
-				comps += deleteFirstFromHeap(smallHeap, heapSize--, MIN).getValue();
+				comps += deleteFirstFromHeap(smallHeap, heapSize--, indexes, MIN).getValue();
 				if(bigHeap.length == currIndex * 2) {
-					comps += insertToHeap(smallHeap, heapSize++, bigHeap[currIndex * 2 - 1], MIN);
-					indexes.put(bigHeap[currIndex * 2 - 1], currIndex * 2 - 1);
+					indexes[heapSize] = currIndex * 2 - 1;
+					comps += insertToHeap(smallHeap, heapSize++, bigHeap[currIndex * 2 - 1], indexes, MIN);
 				}
 				
 				continue;
@@ -313,11 +325,11 @@ public class selectProblems
 
 			leftNode = bigHeap[currIndex * 2 - 1];
 			rightNode = bigHeap[currIndex * 2];
-			comps += deleteFirstFromHeap(smallHeap, heapSize--, MIN).getValue();
-			comps += insertToHeap(smallHeap, heapSize++, leftNode, MIN) + 
-					insertToHeap(smallHeap, heapSize++, rightNode, MIN);
-			indexes.put(leftNode, currIndex * 2 - 1);
-			indexes.put(rightNode, currIndex * 2);
+			comps += deleteFirstFromHeap(smallHeap, heapSize--, indexes, MIN).getValue();
+			indexes[heapSize] = currIndex * 2 - 1;
+			indexes[heapSize + 1] = currIndex * 2;
+			comps += insertToHeap(smallHeap, heapSize++, leftNode, indexes, MIN) + 
+					insertToHeap(smallHeap, heapSize++, rightNode, indexes, MIN);
 
 		}
 
