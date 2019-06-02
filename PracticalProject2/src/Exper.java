@@ -6,11 +6,13 @@ import javafx.util.Pair;
 public class Exper {
 	private static final int MAX_VALUE = 1000000;
 	public static void main(String[] args) {
-		
-		RandomExper();
-	}
-	public static void DeterministicExper() {
 		selectProblems s = new selectProblems();
+		System.out.println("random");
+		RandomExper(s);
+		System.out.println("deterministic");
+		DeterministicExper(s);
+	}
+	public static void DeterministicExper(selectProblems s) {
 		for(int i = 1 ; i < 11 ; i++) {
 			int n = 10000 * i;
 			int[] array = randomArray(n);
@@ -26,9 +28,9 @@ public class Exper {
 		}
 	}
 	
-	public static void RandomExper() {
+	public static void RandomExper(selectProblems s ) {
 		// good for random functions
-				selectProblems s = new selectProblems();
+				
 				for(int i = 1; i < 11; i++) {
 					int n = i * 10000;
 					int[] array = randomArray(n);
