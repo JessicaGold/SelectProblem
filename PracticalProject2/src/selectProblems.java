@@ -398,11 +398,13 @@ public class selectProblems
 	 */
 	public Pair<Integer, Integer> partition(int[] array, int left, int right, int pivotIndex, int comp) {
 		int pivotValue = array[pivotIndex];
+		// 
+		int new_comp = comp;
 		swap(array, pivotIndex, right); // move pivot to end
 		int storeIndex = left;
 		for(int i = left; i < right; i++) {
 			// we are doing a compare by array[i] < pivotValue
-			comp++;
+			new_comp++;
 			if(array[i] < pivotValue) {
 				swap(array, storeIndex, i);
 				storeIndex++;
@@ -410,7 +412,7 @@ public class selectProblems
 		}
 		swap(array, right, storeIndex); // Move pivot to its final place
         //making a new Pair
-        Pair<Integer, Integer> result_pair = new Pair<Integer, Integer>(storeIndex, comp);
+        Pair<Integer, Integer> result_pair = new Pair<Integer, Integer>(storeIndex, new_comp);
 		return result_pair; 
 
 	}
@@ -445,7 +447,7 @@ public class selectProblems
 		int n = arr.length;
 		int[] array = new int[n];
 		System.arraycopy(arr, 0, array, 0, n);
-		return Select(array, 0, array.length - 1, k, 0);
+		return recursiceMedOfMed(array, 0, array.length - 1, k, 0);
 	}
 	
 	/**
@@ -459,12 +461,63 @@ public class selectProblems
 	 * 
 	 * @pre all elements in arr are distinct
 	 * worst case time complexity O(n)
-	 */ 
-	public Pair<Integer, Integer> Select(int[] arr, int l, int r, int k, int comps){
+	 */
+	public Pair<Integer, Integer> recursiceMedOfMed(int[] arr , int l , int r, int k, int comps){
+		// first find the medofmed value
+		Pair<Integer, Integer> medofmed_pair = MedOfMed(arr, l, r, 0);
+		// add the compares was done
+		int new_comps = comps;
+//		int new_comps = comps + medofmed_pair.getValue();
+		// this is the median
+		int medOfMed = medofmed_pair.getKey();
+		// find index of med of med
+        int MedIndex = 0;
+        for(int m = l ; m <= r ; m++) {
+        	// a compare is done
+        	new_comps++;
+        	if(arr[m] == medOfMed) {
+        		MedIndex = m;
+        		break;
+        	}
+        }
+		// Partition the array around medofmed element and 
+        // get position of pivot element in sorted array 
+        Pair<Integer, Integer> partition = partition(arr, l, r, MedIndex, 0); 
+        int pos = partition.getKey();
+        new_comps = new_comps + partition.getValue();
+  
+        // If position is same as k 
+        if (pos-l == k-1) {
+//        	System.out.println(arr[pos]);
+        	return new Pair<Integer, Integer>(arr[pos], new_comps);
+        }
+        if (pos-l > k-1)  // If position is more, recur for left 
+            return recursiceMedOfMed(arr, l, pos-1, k, new_comps); 
+  
+        // Else recur for right subarray 
+        return recursiceMedOfMed(arr, pos+1, r, k-pos+l-1, new_comps); 
+ 
+	}
+	
+	/**
+	 * a recursice function to find the median of medians in given array
+	 * Divide arr[] in groups of size 5, calculate median of every group
+	 * repeat the process until you left with one element
+	 * 
+	 * @param array
+	 * @param array boundaries
+	 * @param number of compares that already done in the recursive loop
+	 * @return a pair with the value of median of medians - as key, and the number of compares was done - as value
+	 * 
+	 * @pre all elements in arr are distinct
+	 * time complexity O(n)
+	 */
+	
+	public Pair<Integer, Integer> MedOfMed(int[] arr, int l, int r, int comps){
 		{ 
 		     
 	        int n = r-l+1; // Number of elements in arr[l..r] 
-	  
+	        int new_comps = comps;
 	        // Divide arr[] in groups of size 5, calculate median 
 	        // of every group and store it in median[] array. 
 	        int i; 
@@ -479,13 +532,13 @@ public class selectProblems
 	                    arr[j + 1] = arr[j]; 
 	                    j = j - 1;
 	                    // a compare was done
-	                    comps ++;                
+	                    new_comps ++;                
 	                }
 	                // a compare was still done but did not going inside the while loop
 	                // happens when array[j] <= key and j is not l + i * 5 - 1 
 	                // -1 the starting point
 	                if(j != l + i * 5 - 1) {
-	                	comps++;
+	                	new_comps++;
 	                }
 	                // finally put the wanted position for our current key
 	                arr[j + 1] = key;
@@ -504,12 +557,12 @@ public class selectProblems
 	                    arr[j + 1] = arr[j]; 
 	                    j = j - 1;
 	                    // a compare was done
-	                    comps ++;                
+	                    new_comps ++;                
 	                }
 	                // a compare was still done but did not going inside the while loop
 	                // happens when array[j] <= key and j is not l + i * 5 - 1 
 	                if(j != l + i * 5 - 1) {
-	                	comps++;
+	                	new_comps++;
 	                }
 	                // finally put the wanted position for our current key
 	                arr[j + 1] = key;
@@ -521,41 +574,13 @@ public class selectProblems
 	        // Find median of all medians using recursive call. 
 	        // If median[] has only one element, then no need 
 	        // of recursive call 
-	        int medOfMed = 0;
 	        if (i == 1) {
-	        	medOfMed = median[i - 1];
+	        	return new Pair<Integer, Integer>(median[i - 1], new_comps);
 	        }
 	        else {
-	        	Pair<Integer, Integer> select = Select(median, 0, i - 1, i/2, 0);
-	        	comps = comps + select.getValue();
-	        	medOfMed = select.getKey();
+	        	return MedOfMed(median, 0, i - 1, new_comps);
 	        }
-	        
-	        // find index of med of med
-	        int MedIndex = 0;
-	        for(int m = l ; m <= r ; m++) {
-	        	if(arr[m] == medOfMed) {
-	        		MedIndex = m;
-	        		break;
-	        	}
-	        }
-	        // Partition the array around a random element and 
-	        // get position of pivot element in sorted array 
-	        Pair<Integer, Integer> partition = partition(arr, l, r, MedIndex, 0); 
-	        int pos = partition.getKey();
-	        comps = comps + partition.getValue();
-	  
-	        // If position is same as k 
-	        if (pos-l == k-1) {
-//	        	System.out.println(arr[pos]);
-	        	return new Pair<Integer, Integer>(arr[pos], comps);
-	        }
-	        if (pos-l > k-1)  // If position is more, recur for left 
-	            return Select(arr, l, pos-1, k, comps); 
-	  
-	        // Else recur for right subarray 
-	        return Select(arr, pos+1, r, k-pos+l-1, comps); 
-	    } 
-	  
-	}	  
+		}
+	}
 }
+	  
