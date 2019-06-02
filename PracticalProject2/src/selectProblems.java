@@ -1,7 +1,6 @@
 import javafx.util.Pair;
 import java.util.Random;
-import java.util.Arrays;
-import java.util.HashMap;
+
 
 
 public class selectProblems
