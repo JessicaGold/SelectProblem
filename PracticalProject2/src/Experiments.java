@@ -91,13 +91,12 @@ public class Experiments {
 			int[] array = randomArray(n);
 			for(int j = 0; j < 11; j++) {
 				int k = 1 + j * n / 10;
-				if(k > n) {
-					break;
+				if(k <= n) {
+					System.out.println("Number of comparisons for k: " + k +
+							" in array size " + n);
+					System.out.print("using " + methodToString(mtd) + ":");
+					System.out.println(runFunc(array, k, s, mtd));
 				}
-				System.out.println("Number of comparisons for k: " + k +
-						" in array size " + n);
-				System.out.print("using " + methodToString(mtd) + ":");
-				System.out.println(runFunc(array, k, s, mtd));
 			}
 		}
 	}
@@ -134,7 +133,7 @@ public class Experiments {
 	public static void main(String[] args) {
 		//run the function doExperiment
 		selectProblems s = new selectProblems();
-		doExperiment(s, method.selectRandQuickSort);
+		doExperiment(s, method.selectDoubleHeap);
 	}
 	
 }
