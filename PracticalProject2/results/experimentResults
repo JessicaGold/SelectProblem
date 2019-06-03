@@ -1,0 +1,716 @@
+Number of comparisons for k: 1 in array size 10000
+using Random Quick Sort avarage over 10 atempts:
+155210
+Number of comparisons for k: 1001 in array size 10000
+using Random Quick Sort avarage over 10 atempts:
+156950
+Number of comparisons for k: 2001 in array size 10000
+using Random Quick Sort avarage over 10 atempts:
+157255
+Number of comparisons for k: 3001 in array size 10000
+using Random Quick Sort avarage over 10 atempts:
+156270
+Number of comparisons for k: 4001 in array size 10000
+using Random Quick Sort avarage over 10 atempts:
+157527
+Number of comparisons for k: 5001 in array size 10000
+using Random Quick Sort avarage over 10 atempts:
+157713
+Number of comparisons for k: 6001 in array size 10000
+using Random Quick Sort avarage over 10 atempts:
+152625
+Number of comparisons for k: 7001 in array size 10000
+using Random Quick Sort avarage over 10 atempts:
+156899
+Number of comparisons for k: 8001 in array size 10000
+using Random Quick Sort avarage over 10 atempts:
+156692
+Number of comparisons for k: 9001 in array size 10000
+using Random Quick Sort avarage over 10 atempts:
+154586
+Number of comparisons for k: 1 in array size 20000
+using Random Quick Sort avarage over 10 atempts:
+334635
+Number of comparisons for k: 2001 in array size 20000
+using Random Quick Sort avarage over 10 atempts:
+341713
+Number of comparisons for k: 4001 in array size 20000
+using Random Quick Sort avarage over 10 atempts:
+344210
+Number of comparisons for k: 6001 in array size 20000
+using Random Quick Sort avarage over 10 atempts:
+335824
+Number of comparisons for k: 8001 in array size 20000
+using Random Quick Sort avarage over 10 atempts:
+336653
+Number of comparisons for k: 10001 in array size 20000
+using Random Quick Sort avarage over 10 atempts:
+346800
+Number of comparisons for k: 12001 in array size 20000
+using Random Quick Sort avarage over 10 atempts:
+341306
+Number of comparisons for k: 14001 in array size 20000
+using Random Quick Sort avarage over 10 atempts:
+339670
+Number of comparisons for k: 16001 in array size 20000
+using Random Quick Sort avarage over 10 atempts:
+337285
+Number of comparisons for k: 18001 in array size 20000
+using Random Quick Sort avarage over 10 atempts:
+333447
+Number of comparisons for k: 1 in array size 30000
+using Random Quick Sort avarage over 10 atempts:
+530435
+Number of comparisons for k: 3001 in array size 30000
+using Random Quick Sort avarage over 10 atempts:
+547627
+Number of comparisons for k: 6001 in array size 30000
+using Random Quick Sort avarage over 10 atempts:
+531316
+Number of comparisons for k: 9001 in array size 30000
+using Random Quick Sort avarage over 10 atempts:
+536371
+Number of comparisons for k: 12001 in array size 30000
+using Random Quick Sort avarage over 10 atempts:
+553155
+Number of comparisons for k: 15001 in array size 30000
+using Random Quick Sort avarage over 10 atempts:
+537127
+Number of comparisons for k: 18001 in array size 30000
+using Random Quick Sort avarage over 10 atempts:
+541593
+Number of comparisons for k: 21001 in array size 30000
+using Random Quick Sort avarage over 10 atempts:
+547895
+Number of comparisons for k: 24001 in array size 30000
+using Random Quick Sort avarage over 10 atempts:
+533130
+Number of comparisons for k: 27001 in array size 30000
+using Random Quick Sort avarage over 10 atempts:
+539207
+Number of comparisons for k: 1 in array size 40000
+using Random Quick Sort avarage over 10 atempts:
+746863
+Number of comparisons for k: 4001 in array size 40000
+using Random Quick Sort avarage over 10 atempts:
+747857
+Number of comparisons for k: 8001 in array size 40000
+using Random Quick Sort avarage over 10 atempts:
+756556
+Number of comparisons for k: 12001 in array size 40000
+using Random Quick Sort avarage over 10 atempts:
+752029
+Number of comparisons for k: 16001 in array size 40000
+using Random Quick Sort avarage over 10 atempts:
+763594
+Number of comparisons for k: 20001 in array size 40000
+using Random Quick Sort avarage over 10 atempts:
+761219
+Number of comparisons for k: 24001 in array size 40000
+using Random Quick Sort avarage over 10 atempts:
+749340
+Number of comparisons for k: 28001 in array size 40000
+using Random Quick Sort avarage over 10 atempts:
+751676
+Number of comparisons for k: 32001 in array size 40000
+using Random Quick Sort avarage over 10 atempts:
+754669
+Number of comparisons for k: 36001 in array size 40000
+using Random Quick Sort avarage over 10 atempts:
+735369
+Number of comparisons for k: 1 in array size 50000
+using Random Quick Sort avarage over 10 atempts:
+980433
+Number of comparisons for k: 5001 in array size 50000
+using Random Quick Sort avarage over 10 atempts:
+949287
+Number of comparisons for k: 10001 in array size 50000
+using Random Quick Sort avarage over 10 atempts:
+964087
+Number of comparisons for k: 15001 in array size 50000
+using Random Quick Sort avarage over 10 atempts:
+981890
+Number of comparisons for k: 20001 in array size 50000
+using Random Quick Sort avarage over 10 atempts:
+968745
+Number of comparisons for k: 25001 in array size 50000
+using Random Quick Sort avarage over 10 atempts:
+977617
+Number of comparisons for k: 30001 in array size 50000
+using Random Quick Sort avarage over 10 atempts:
+972135
+Number of comparisons for k: 35001 in array size 50000
+using Random Quick Sort avarage over 10 atempts:
+979605
+Number of comparisons for k: 40001 in array size 50000
+using Random Quick Sort avarage over 10 atempts:
+963401
+Number of comparisons for k: 45001 in array size 50000
+using Random Quick Sort avarage over 10 atempts:
+972055
+Number of comparisons for k: 1 in array size 60000
+using Random Quick Sort avarage over 10 atempts:
+1181645
+Number of comparisons for k: 6001 in array size 60000
+using Random Quick Sort avarage over 10 atempts:
+1210224
+Number of comparisons for k: 12001 in array size 60000
+using Random Quick Sort avarage over 10 atempts:
+1231931
+Number of comparisons for k: 18001 in array size 60000
+using Random Quick Sort avarage over 10 atempts:
+1223669
+Number of comparisons for k: 24001 in array size 60000
+using Random Quick Sort avarage over 10 atempts:
+1173935
+Number of comparisons for k: 30001 in array size 60000
+using Random Quick Sort avarage over 10 atempts:
+1195150
+Number of comparisons for k: 36001 in array size 60000
+using Random Quick Sort avarage over 10 atempts:
+1203819
+Number of comparisons for k: 42001 in array size 60000
+using Random Quick Sort avarage over 10 atempts:
+1212158
+Number of comparisons for k: 48001 in array size 60000
+using Random Quick Sort avarage over 10 atempts:
+1201066
+Number of comparisons for k: 54001 in array size 60000
+using Random Quick Sort avarage over 10 atempts:
+1216446
+Number of comparisons for k: 1 in array size 70000
+using Random Quick Sort avarage over 10 atempts:
+1414797
+Number of comparisons for k: 7001 in array size 70000
+using Random Quick Sort avarage over 10 atempts:
+1437318
+Number of comparisons for k: 14001 in array size 70000
+using Random Quick Sort avarage over 10 atempts:
+1428000
+Number of comparisons for k: 21001 in array size 70000
+using Random Quick Sort avarage over 10 atempts:
+1442825
+Number of comparisons for k: 28001 in array size 70000
+using Random Quick Sort avarage over 10 atempts:
+1453353
+Number of comparisons for k: 35001 in array size 70000
+using Random Quick Sort avarage over 10 atempts:
+1427174
+Number of comparisons for k: 42001 in array size 70000
+using Random Quick Sort avarage over 10 atempts:
+1434741
+Number of comparisons for k: 49001 in array size 70000
+using Random Quick Sort avarage over 10 atempts:
+1435596
+Number of comparisons for k: 56001 in array size 70000
+using Random Quick Sort avarage over 10 atempts:
+1445373
+Number of comparisons for k: 63001 in array size 70000
+using Random Quick Sort avarage over 10 atempts:
+1446730
+Number of comparisons for k: 1 in array size 80000
+using Random Quick Sort avarage over 10 atempts:
+1689127
+Number of comparisons for k: 8001 in array size 80000
+using Random Quick Sort avarage over 10 atempts:
+1726591
+Number of comparisons for k: 16001 in array size 80000
+using Random Quick Sort avarage over 10 atempts:
+1673298
+Number of comparisons for k: 24001 in array size 80000
+using Random Quick Sort avarage over 10 atempts:
+1701731
+Number of comparisons for k: 32001 in array size 80000
+using Random Quick Sort avarage over 10 atempts:
+1677570
+Number of comparisons for k: 40001 in array size 80000
+using Random Quick Sort avarage over 10 atempts:
+1686902
+Number of comparisons for k: 48001 in array size 80000
+using Random Quick Sort avarage over 10 atempts:
+1683603
+Number of comparisons for k: 56001 in array size 80000
+using Random Quick Sort avarage over 10 atempts:
+1691868
+Number of comparisons for k: 64001 in array size 80000
+using Random Quick Sort avarage over 10 atempts:
+1697422
+Number of comparisons for k: 72001 in array size 80000
+using Random Quick Sort avarage over 10 atempts:
+1686545
+Number of comparisons for k: 1 in array size 90000
+using Random Quick Sort avarage over 10 atempts:
+1939241
+Number of comparisons for k: 9001 in array size 90000
+using Random Quick Sort avarage over 10 atempts:
+1948626
+Number of comparisons for k: 18001 in array size 90000
+using Random Quick Sort avarage over 10 atempts:
+1948521
+Number of comparisons for k: 27001 in array size 90000
+using Random Quick Sort avarage over 10 atempts:
+1944102
+Number of comparisons for k: 36001 in array size 90000
+using Random Quick Sort avarage over 10 atempts:
+1969222
+Number of comparisons for k: 45001 in array size 90000
+using Random Quick Sort avarage over 10 atempts:
+1942590
+Number of comparisons for k: 54001 in array size 90000
+using Random Quick Sort avarage over 10 atempts:
+1946932
+Number of comparisons for k: 63001 in array size 90000
+using Random Quick Sort avarage over 10 atempts:
+1968500
+Number of comparisons for k: 72001 in array size 90000
+using Random Quick Sort avarage over 10 atempts:
+1963853
+Number of comparisons for k: 81001 in array size 90000
+using Random Quick Sort avarage over 10 atempts:
+1958873
+Number of comparisons for k: 1 in array size 100000
+using Random Quick Sort avarage over 10 atempts:
+2201245
+Number of comparisons for k: 10001 in array size 100000
+using Random Quick Sort avarage over 10 atempts:
+2198953
+Number of comparisons for k: 20001 in array size 100000
+using Random Quick Sort avarage over 10 atempts:
+2217878
+Number of comparisons for k: 30001 in array size 100000
+using Random Quick Sort avarage over 10 atempts:
+2217087
+Number of comparisons for k: 40001 in array size 100000
+using Random Quick Sort avarage over 10 atempts:
+2217420
+Number of comparisons for k: 50001 in array size 100000
+using Random Quick Sort avarage over 10 atempts:
+2226989
+Number of comparisons for k: 60001 in array size 100000
+using Random Quick Sort avarage over 10 atempts:
+2217518
+Number of comparisons for k: 70001 in array size 100000
+using Random Quick Sort avarage over 10 atempts:
+2235784
+Number of comparisons for k: 80001 in array size 100000
+using Random Quick Sort avarage over 10 atempts:
+2223895
+Number of comparisons for k: 90001 in array size 100000
+using Random Quick Sort avarage over 10 atempts:
+2242096
+
+
+
+
+
+
+
+Number of comparisons for k: 1 in array size 10000
+using Heap:18736
+Number of comparisons for k: 1001 in array size 10000
+using Heap:43164
+Number of comparisons for k: 2001 in array size 10000
+using Heap:67240
+Number of comparisons for k: 3001 in array size 10000
+using Heap:90968
+Number of comparisons for k: 4001 in array size 10000
+using Heap:114230
+Number of comparisons for k: 5001 in array size 10000
+using Heap:137054
+Number of comparisons for k: 6001 in array size 10000
+using Heap:159262
+Number of comparisons for k: 7001 in array size 10000
+using Heap:180787
+Number of comparisons for k: 8001 in array size 10000
+using Heap:201319
+Number of comparisons for k: 9001 in array size 10000
+using Heap:220306
+Number of comparisons for k: 1 in array size 20000
+using Heap:37555
+Number of comparisons for k: 2001 in array size 20000
+using Heap:90576
+Number of comparisons for k: 4001 in array size 20000
+using Heap:142660
+Number of comparisons for k: 6001 in array size 20000
+using Heap:194056
+Number of comparisons for k: 8001 in array size 20000
+using Heap:244548
+Number of comparisons for k: 10001 in array size 20000
+using Heap:294082
+Number of comparisons for k: 12001 in array size 20000
+using Heap:342532
+Number of comparisons for k: 14001 in array size 20000
+using Heap:389588
+Number of comparisons for k: 16001 in array size 20000
+using Heap:434623
+Number of comparisons for k: 18001 in array size 20000
+using Heap:476611
+Number of comparisons for k: 1 in array size 30000
+using Heap:56484
+Number of comparisons for k: 3001 in array size 30000
+using Heap:139162
+Number of comparisons for k: 6001 in array size 30000
+using Heap:220646
+Number of comparisons for k: 9001 in array size 30000
+using Heap:300992
+Number of comparisons for k: 12001 in array size 30000
+using Heap:380194
+Number of comparisons for k: 15001 in array size 30000
+using Heap:458112
+Number of comparisons for k: 18001 in array size 30000
+using Heap:534446
+Number of comparisons for k: 21001 in array size 30000
+using Heap:608488
+Number of comparisons for k: 24001 in array size 30000
+using Heap:679594
+Number of comparisons for k: 27001 in array size 30000
+using Heap:746158
+Number of comparisons for k: 1 in array size 40000
+using Heap:75100
+Number of comparisons for k: 4001 in array size 40000
+using Heap:188896
+Number of comparisons for k: 8001 in array size 40000
+using Heap:301153
+Number of comparisons for k: 12001 in array size 40000
+using Heap:411837
+Number of comparisons for k: 16001 in array size 40000
+using Heap:520858
+Number of comparisons for k: 20001 in array size 40000
+using Heap:628066
+Number of comparisons for k: 24001 in array size 40000
+using Heap:732996
+Number of comparisons for k: 28001 in array size 40000
+using Heap:835123
+Number of comparisons for k: 32001 in array size 40000
+using Heap:933321
+Number of comparisons for k: 36001 in array size 40000
+using Heap:1025299
+Number of comparisons for k: 1 in array size 50000
+using Heap:94061
+Number of comparisons for k: 5001 in array size 50000
+using Heap:239739
+Number of comparisons for k: 10001 in array size 50000
+using Heap:383367
+Number of comparisons for k: 15001 in array size 50000
+using Heap:525116
+Number of comparisons for k: 20001 in array size 50000
+using Heap:664780
+Number of comparisons for k: 25001 in array size 50000
+using Heap:802194
+Number of comparisons for k: 30001 in array size 50000
+using Heap:936707
+Number of comparisons for k: 35001 in array size 50000
+using Heap:1067384
+Number of comparisons for k: 40001 in array size 50000
+using Heap:1193034
+Number of comparisons for k: 45001 in array size 50000
+using Heap:1311279
+Number of comparisons for k: 1 in array size 60000
+using Heap:112990
+Number of comparisons for k: 6001 in array size 60000
+using Heap:290354
+Number of comparisons for k: 12001 in array size 60000
+using Heap:465428
+Number of comparisons for k: 18001 in array size 60000
+using Heap:637938
+Number of comparisons for k: 24001 in array size 60000
+using Heap:808340
+Number of comparisons for k: 30001 in array size 60000
+using Heap:976300
+Number of comparisons for k: 36001 in array size 60000
+using Heap:1140956
+Number of comparisons for k: 42001 in array size 60000
+using Heap:1301239
+Number of comparisons for k: 48001 in array size 60000
+using Heap:1455358
+Number of comparisons for k: 54001 in array size 60000
+using Heap:1600390
+Number of comparisons for k: 1 in array size 70000
+using Heap:131621
+Number of comparisons for k: 7001 in array size 70000
+using Heap:341623
+Number of comparisons for k: 14001 in array size 70000
+using Heap:548865
+Number of comparisons for k: 21001 in array size 70000
+using Heap:753323
+Number of comparisons for k: 28001 in array size 70000
+using Heap:954926
+Number of comparisons for k: 35001 in array size 70000
+using Heap:1153592
+Number of comparisons for k: 42001 in array size 70000
+using Heap:1348562
+Number of comparisons for k: 49001 in array size 70000
+using Heap:1538653
+Number of comparisons for k: 56001 in array size 70000
+using Heap:1721667
+Number of comparisons for k: 63001 in array size 70000
+using Heap:1893981
+Number of comparisons for k: 1 in array size 80000
+using Heap:150469
+Number of comparisons for k: 8001 in array size 80000
+using Heap:394149
+Number of comparisons for k: 16001 in array size 80000
+using Heap:634759
+Number of comparisons for k: 24001 in array size 80000
+using Heap:872245
+Number of comparisons for k: 32001 in array size 80000
+using Heap:1106287
+Number of comparisons for k: 40001 in array size 80000
+using Heap:1336586
+Number of comparisons for k: 48001 in array size 80000
+using Heap:1562496
+Number of comparisons for k: 56001 in array size 80000
+using Heap:1782742
+Number of comparisons for k: 64001 in array size 80000
+using Heap:1995126
+Number of comparisons for k: 72001 in array size 80000
+using Heap:2194985
+Number of comparisons for k: 1 in array size 90000
+using Heap:169496
+Number of comparisons for k: 9001 in array size 90000
+using Heap:446864
+Number of comparisons for k: 18001 in array size 90000
+using Heap:720886
+Number of comparisons for k: 27001 in array size 90000
+using Heap:991380
+Number of comparisons for k: 36001 in array size 90000
+using Heap:1258122
+Number of comparisons for k: 45001 in array size 90000
+using Heap:1520574
+Number of comparisons for k: 54001 in array size 90000
+using Heap:1777670
+Number of comparisons for k: 63001 in array size 90000
+using Heap:2028301
+Number of comparisons for k: 72001 in array size 90000
+using Heap:2270117
+Number of comparisons for k: 81001 in array size 90000
+using Heap:2498302
+Number of comparisons for k: 1 in array size 100000
+using Heap:188097
+Number of comparisons for k: 10001 in array size 100000
+using Heap:499291
+Number of comparisons for k: 20001 in array size 100000
+using Heap:806590
+Number of comparisons for k: 30001 in array size 100000
+using Heap:1109778
+Number of comparisons for k: 40001 in array size 100000
+using Heap:1409294
+Number of comparisons for k: 50001 in array size 100000
+using Heap:1704261
+Number of comparisons for k: 60001 in array size 100000
+using Heap:1993263
+Number of comparisons for k: 70001 in array size 100000
+using Heap:2274801
+Number of comparisons for k: 80001 in array size 100000
+using Heap:2546291
+Number of comparisons for k: 90001 in array size 100000
+using Heap:2802872
+
+
+
+
+
+
+
+
+Number of comparisons for k: 1 in array size 10000
+using Double Heap:18833
+Number of comparisons for k: 1001 in array size 10000
+using Double Heap:37720
+Number of comparisons for k: 2001 in array size 10000
+using Double Heap:60667
+Number of comparisons for k: 3001 in array size 10000
+using Double Heap:84663
+Number of comparisons for k: 4001 in array size 10000
+using Double Heap:108610
+Number of comparisons for k: 5001 in array size 10000
+using Double Heap:131637
+Number of comparisons for k: 6001 in array size 10000
+using Double Heap:153836
+Number of comparisons for k: 7001 in array size 10000
+using Double Heap:175434
+Number of comparisons for k: 8001 in array size 10000
+using Double Heap:196087
+Number of comparisons for k: 9001 in array size 10000
+using Double Heap:215123
+Number of comparisons for k: 1 in array size 20000
+using Double Heap:37584
+Number of comparisons for k: 2001 in array size 20000
+using Double Heap:79360
+Number of comparisons for k: 4001 in array size 20000
+using Double Heap:128967
+Number of comparisons for k: 6001 in array size 20000
+using Double Heap:180750
+Number of comparisons for k: 8001 in array size 20000
+using Double Heap:232537
+Number of comparisons for k: 10001 in array size 20000
+using Double Heap:282499
+Number of comparisons for k: 12001 in array size 20000
+using Double Heap:331056
+Number of comparisons for k: 14001 in array size 20000
+using Double Heap:378408
+Number of comparisons for k: 16001 in array size 20000
+using Double Heap:423791
+Number of comparisons for k: 18001 in array size 20000
+using Double Heap:465970
+Number of comparisons for k: 1 in array size 30000
+using Double Heap:56465
+Number of comparisons for k: 3001 in array size 30000
+using Double Heap:123035
+Number of comparisons for k: 6001 in array size 30000
+using Double Heap:201169
+Number of comparisons for k: 9001 in array size 30000
+using Double Heap:281965
+Number of comparisons for k: 12001 in array size 30000
+using Double Heap:363088
+Number of comparisons for k: 15001 in array size 30000
+using Double Heap:441980
+Number of comparisons for k: 18001 in array size 30000
+using Double Heap:518351
+Number of comparisons for k: 21001 in array size 30000
+using Double Heap:592937
+Number of comparisons for k: 24001 in array size 30000
+using Double Heap:664206
+Number of comparisons for k: 27001 in array size 30000
+using Double Heap:730908
+Number of comparisons for k: 1 in array size 40000
+using Double Heap:75333
+Number of comparisons for k: 4001 in array size 40000
+using Double Heap:167205
+Number of comparisons for k: 8001 in array size 40000
+using Double Heap:274483
+Number of comparisons for k: 12001 in array size 40000
+using Double Heap:385775
+Number of comparisons for k: 16001 in array size 40000
+using Double Heap:497316
+Number of comparisons for k: 20001 in array size 40000
+using Double Heap:604939
+Number of comparisons for k: 24001 in array size 40000
+using Double Heap:709729
+Number of comparisons for k: 28001 in array size 40000
+using Double Heap:812299
+Number of comparisons for k: 32001 in array size 40000
+using Double Heap:910964
+Number of comparisons for k: 36001 in array size 40000
+using Double Heap:1003148
+Number of comparisons for k: 1 in array size 50000
+using Double Heap:94093
+Number of comparisons for k: 5001 in array size 50000
+using Double Heap:212201
+Number of comparisons for k: 10001 in array size 50000
+using Double Heap:349646
+Number of comparisons for k: 15001 in array size 50000
+using Double Heap:492493
+Number of comparisons for k: 20001 in array size 50000
+using Double Heap:634550
+Number of comparisons for k: 25001 in array size 50000
+using Double Heap:771646
+Number of comparisons for k: 30001 in array size 50000
+using Double Heap:905461
+Number of comparisons for k: 35001 in array size 50000
+using Double Heap:1036128
+Number of comparisons for k: 40001 in array size 50000
+using Double Heap:1162150
+Number of comparisons for k: 45001 in array size 50000
+using Double Heap:1280830
+Number of comparisons for k: 1 in array size 60000
+using Double Heap:112996
+Number of comparisons for k: 6001 in array size 60000
+using Double Heap:258035
+Number of comparisons for k: 12001 in array size 60000
+using Double Heap:425953
+Number of comparisons for k: 18001 in array size 60000
+using Double Heap:599963
+Number of comparisons for k: 24001 in array size 60000
+using Double Heap:773977
+Number of comparisons for k: 30001 in array size 60000
+using Double Heap:943240
+Number of comparisons for k: 36001 in array size 60000
+using Double Heap:1107895
+Number of comparisons for k: 42001 in array size 60000
+using Double Heap:1269420
+Number of comparisons for k: 48001 in array size 60000
+using Double Heap:1423789
+Number of comparisons for k: 54001 in array size 60000
+using Double Heap:1569217
+Number of comparisons for k: 1 in array size 70000
+using Double Heap:131637
+Number of comparisons for k: 7001 in array size 70000
+using Double Heap:303829
+Number of comparisons for k: 14001 in array size 70000
+using Double Heap:503140
+Number of comparisons for k: 21001 in array size 70000
+using Double Heap:708936
+Number of comparisons for k: 28001 in array size 70000
+using Double Heap:915906
+Number of comparisons for k: 35001 in array size 70000
+using Double Heap:1115583
+Number of comparisons for k: 42001 in array size 70000
+using Double Heap:1310332
+Number of comparisons for k: 49001 in array size 70000
+using Double Heap:1501837
+Number of comparisons for k: 56001 in array size 70000
+using Double Heap:1685697
+Number of comparisons for k: 63001 in array size 70000
+using Double Heap:1858268
+Number of comparisons for k: 1 in array size 80000
+using Double Heap:150543
+Number of comparisons for k: 8001 in array size 80000
+using Double Heap:350177
+Number of comparisons for k: 16001 in array size 80000
+using Double Heap:580828
+Number of comparisons for k: 24001 in array size 80000
+using Double Heap:819363
+Number of comparisons for k: 32001 in array size 80000
+using Double Heap:1058683
+Number of comparisons for k: 40001 in array size 80000
+using Double Heap:1289664
+Number of comparisons for k: 48001 in array size 80000
+using Double Heap:1515064
+Number of comparisons for k: 56001 in array size 80000
+using Double Heap:1736291
+Number of comparisons for k: 64001 in array size 80000
+using Double Heap:1949638
+Number of comparisons for k: 72001 in array size 80000
+using Double Heap:2150095
+Number of comparisons for k: 1 in array size 90000
+using Double Heap:169422
+Number of comparisons for k: 9001 in array size 90000
+using Double Heap:397229
+Number of comparisons for k: 18001 in array size 90000
+using Double Heap:659951
+Number of comparisons for k: 27001 in array size 90000
+using Double Heap:932499
+Number of comparisons for k: 36001 in array size 90000
+using Double Heap:1203805
+Number of comparisons for k: 45001 in array size 90000
+using Double Heap:1465711
+Number of comparisons for k: 54001 in array size 90000
+using Double Heap:1721620
+Number of comparisons for k: 63001 in array size 90000
+using Double Heap:1973214
+Number of comparisons for k: 72001 in array size 90000
+using Double Heap:2215874
+Number of comparisons for k: 81001 in array size 90000
+using Double Heap:2444702
+Number of comparisons for k: 1 in array size 100000
+using Double Heap:188120
+Number of comparisons for k: 10001 in array size 100000
+using Double Heap:444277
+Number of comparisons for k: 20001 in array size 100000
+using Double Heap:739275
+Number of comparisons for k: 30001 in array size 100000
+using Double Heap:1044808
+Number of comparisons for k: 40001 in array size 100000
+using Double Heap:1348444
+Number of comparisons for k: 50001 in array size 100000
+using Double Heap:1642172
+Number of comparisons for k: 60001 in array size 100000
+using Double Heap:1929913
+Number of comparisons for k: 70001 in array size 100000
+using Double Heap:2211383
+Number of comparisons for k: 80001 in array size 100000
+using Double Heap:2483743
+Number of comparisons for k: 90001 in array size 100000
+using Double Heap:2741031
+
