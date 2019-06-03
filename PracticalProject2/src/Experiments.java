@@ -39,9 +39,9 @@ public class Experiments {
 
 		for (int i = 0; i < n; i++) {
 			int next = randInt(0, MAX_VALUE);
-			while(numInArray(res, next)) {
+			/*while(numInArray(res, next)) {
 				next = randInt(0, MAX_VALUE);
-			}
+			}*/
 			res[i] = next;
 		}
 
@@ -133,7 +133,7 @@ public class Experiments {
 	public static void main(String[] args) {
 		//run the function doExperiment
 		selectProblems s = new selectProblems();
-		doExperiment(s, method.selectInsertionSort);
+		doExperiment(s, method.selectRandQuickSort);
 	}
 	
 }
