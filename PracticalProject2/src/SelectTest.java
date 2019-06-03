@@ -39,11 +39,11 @@ public class SelectTest {
 				for (int k = 1; k <= n; k++) {
 
 					int actual;
-//					int actual = s.selectRandQuickSort(array.clone(), k).getKey();
-//					if (actual != sortedArray[k-1]) {
-//						error("selectRandQuickSort", array, actual, sortedArray[k-1], k);
-//						return;
-//					}
+					actual = s.selectRandQuickSort(array.clone(), k).getKey();
+					if (actual != sortedArray[k-1]) {
+						error("selectRandQuickSort", array, actual, sortedArray[k-1], k);
+						return;
+					}
 					
 					
 
@@ -80,11 +80,11 @@ public class SelectTest {
 						return;
 					}*/
 
-					actual = s.selectDoubleHeap(array.clone(), k).getKey();
+					/*actual = s.selectDoubleHeap(array.clone(), k).getKey();
 					if (actual != sortedArray[k-1]) {
 						error("selectDoubleHeap", array, actual, sortedArray[k-1], k);
 						return;
-					}
+					}*/
 				
 					/*actual = s.randQuickSelect(array.clone(), k).getKey();
 					if (actual != sortedArray[k-1]) {

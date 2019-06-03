@@ -124,6 +124,7 @@ public class Experiments {
 						" avarage over 10 atempts:");
 				System.out.println(avg);
 				k += n/10;
+				if (k > n) break;
 			}
 		}
 	}

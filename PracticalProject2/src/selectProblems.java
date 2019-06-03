@@ -59,7 +59,7 @@ public class selectProblems
 		int left = start;
 		int right = end - 1;
 		swap(arr, pivotIndex, end);
-		while(right > left) {
+		while(right >= left) {
 			if(pivot > arr[left]) {
 				left++;
 			}
@@ -69,8 +69,8 @@ public class selectProblems
 			}
 		}
 		//at this point left is greater than right by 1
-		swap(arr, right, end);
-		return end - start + recQuickSort(arr, left, end) 
+		swap(arr, left, end);
+		return end - start + recQuickSort(arr, left + 1, end) 
 			+ recQuickSort(arr, start, right);
 		
 	}
