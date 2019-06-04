@@ -475,7 +475,7 @@ public class selectProblems
 	 */
 	public Pair<Integer, Integer> recursiceMedOfMed(int[] arr , int l , int r, int k, int comps){
 		// first find the medofmed value
-		Pair<Integer, Integer> medofmed_pair = MedOfMed(arr, l, r, 0);
+		Pair<Integer, Integer> medofmed_pair = Select(arr, l, r, 0);
 		// add the compares was done
 		int new_comps = comps;
 //		int new_comps = comps + medofmed_pair.getValue();
@@ -485,7 +485,7 @@ public class selectProblems
         int MedIndex = 0;
         for(int m = l ; m <= r ; m++) {
         	// a compare is done
-        	new_comps++;
+//        	new_comps++;
         	if(arr[m] == medOfMed) {
         		MedIndex = m;
         		break;
@@ -524,7 +524,7 @@ public class selectProblems
 	 * time complexity O(n)
 	 */
 	
-	public Pair<Integer, Integer> MedOfMed(int[] arr, int l, int r, int comps){
+	public Pair<Integer, Integer> Select(int[] arr, int l, int r, int comps){
 		{ 
 		     
 	        int n = r-l+1; // Number of elements in arr[l..r] 
@@ -589,7 +589,7 @@ public class selectProblems
 	        	return new Pair<Integer, Integer>(median[i - 1], new_comps);
 	        }
 	        else {
-	        	return MedOfMed(median, 0, i - 1, new_comps);
+	        	return Select(median, 0, i - 1, new_comps);
 	        }
 		}
 	}

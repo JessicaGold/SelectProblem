@@ -133,7 +133,7 @@ public class Experiments {
 	public static void main(String[] args) {
 		//run the function doExperiment
 		selectProblems s = new selectProblems();
-		doExperiment(s, method.selectDoubleHeap);
+		doExperiment(s, method.randQuickSelect);
 	}
 	
 }

@@ -38,20 +38,20 @@ public class SelectTest {
 
 				for (int k = 1; k <= n; k++) {
 
-					int actual;
-					actual = s.selectRandQuickSort(array.clone(), k).getKey();
-					if (actual != sortedArray[k-1]) {
-						error("selectRandQuickSort", array, actual, sortedArray[k-1], k);
-						return;
-					}
+//					int actual;
+//					actual = s.selectRandQuickSort(array.clone(), k).getKey();
+//					if (actual != sortedArray[k-1]) {
+//						error("selectRandQuickSort", array, actual, sortedArray[k-1], k);
+//						return;
+//					}
 					
 					
 
-					/*int actual = s.selectInsertionSort(array.clone(), k).getKey();
+					int actual = s.selectInsertionSort(array.clone(), k).getKey();
 					if (actual != sortedArray[k-1]) {
 						error("selectInsertionSort", array, actual, sortedArray[k-1], k);
 						return;
-					}*/
+					}
 
 //					Pair<Integer, Integer> resultp = s.selectInsertionSort(array.clone(), k);
 //					int actual = resultp.getKey();
@@ -86,7 +86,7 @@ public class SelectTest {
 						return;
 					}*/
 				
-					/*actual = s.randQuickSelect(array.clone(), k).getKey();
+					actual = s.randQuickSelect(array.clone(), k).getKey();
 					if (actual != sortedArray[k-1]) {
 						error("randQuickSelect", array, actual, sortedArray[k-1], k);
 						return;
@@ -97,7 +97,7 @@ public class SelectTest {
 					if (actual != sortedArray[k-1]) {
 						error("medOfMedQuickSelect", array, actual, sortedArray[k-1], k);
 						return;
-					}*/
+					}
 					
 				}
 
