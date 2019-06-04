@@ -7,9 +7,6 @@ public class Exper {
 	private static final int MAX_VALUE = 1000000;
 	public static void main(String[] args) {
 		selectProblems s = new selectProblems();
-		System.out.println("random");
-		RandomExper(s);
-		System.out.println("deterministic");
 		DeterministicExper(s);
 	}
 	public static void DeterministicExper(selectProblems s) {
