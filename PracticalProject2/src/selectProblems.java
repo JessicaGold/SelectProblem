@@ -1,7 +1,12 @@
 import javafx.util.Pair;
 import java.util.Random;
 
-
+/**
+ * 
+ *@names 1 -   2 -
+ *@username 1 -   2 - 
+ *@id 1 -   2-
+ */
 
 public class selectProblems
 {
