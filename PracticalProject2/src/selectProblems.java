@@ -495,7 +495,6 @@ public class selectProblems
   
         // If position is same as k 
         if (pos-l == k-1) {
-//        	System.out.println(arr[pos]);
         	return new Pair<Integer, Integer>(arr[pos], new_comps);
         }
         if (pos-l > k-1)  // If position is more, recur for left 
