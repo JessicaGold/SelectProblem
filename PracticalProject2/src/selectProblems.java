@@ -3,9 +3,9 @@ import java.util.Random;
 
 /**
  * 
- *@names 1 -   2 -
- *@username 1 -   2 - 
- *@id 1 -   2-
+ *@names 1 - Jessica Gold   2 - Topaz Freizeit
+ *@username 1 - jessicagold   2 - topazf
+ *@id 1 - 312505126   2 - 206962193
  */
 
 public class selectProblems
