@@ -117,9 +117,6 @@ public class selectProblems
         for (int i = 1; i < n; i++) { 
             int key = array[i]; 
             int j = i - 1;
-            /* Move elements of arr[0..i-1], that are 
-               greater than key, to one position ahead 
-               of their current position */
             while (j >= 0 && array[j] > key) { 
                 array[j + 1] = array[j]; 
                 j = j - 1;
@@ -374,7 +371,7 @@ public class selectProblems
 	 */
 	
 	public Pair<Integer, Integer> recursiveRandQuic(int[] array, int left, int right, int k, int comp) {
-		if (left == right) { // If the list contains only one element,
+		if (left == right) { 
 			//making a new Pair
 	        Pair<Integer, Integer> result_pair = new Pair<Integer, Integer>(array[left], comp);// return that element
 			return result_pair; 
@@ -416,7 +413,7 @@ public class selectProblems
 		int pivotValue = array[pivotIndex];
 		// 
 		int new_comp = comp;
-		swap(array, pivotIndex, right); // move pivot to end
+		swap(array, pivotIndex, right); 
 		int storeIndex = left;
 		for(int i = left; i < right; i++) {
 			// we are doing a compare by array[i] < pivotValue
@@ -426,7 +423,7 @@ public class selectProblems
 				storeIndex++;
 			}
 		}
-		swap(array, right, storeIndex); // Move pivot to its final place
+		swap(array, right, storeIndex); 
         //making a new Pair
         Pair<Integer, Integer> result_pair = new Pair<Integer, Integer>(storeIndex, new_comp);
 		return result_pair; 
@@ -498,14 +495,14 @@ public class selectProblems
         int pos = partition.getKey();
         new_comps = new_comps + partition.getValue();
   
-        // If position is same as k 
+         
         if (pos-l == k-1) {
         	return new Pair<Integer, Integer>(arr[pos], new_comps);
         }
-        if (pos-l > k-1)  // If position is more, recur for left 
+        if (pos-l > k-1)  
             return recursiceMedOfMed(arr, l, pos-1, k, new_comps); 
   
-        // Else recur for right subarray 
+         
         return recursiceMedOfMed(arr, pos+1, r, k-pos+l-1, new_comps); 
  
 	}
@@ -527,10 +524,8 @@ public class selectProblems
 	public Pair<Integer, Integer> Select(int[] arr, int l, int r, int comps){
 		{ 
 		     
-	        int n = r-l+1; // Number of elements in arr[l..r] 
+	        int n = r-l+1; 
 	        int new_comps = comps;
-	        // Divide arr[] in groups of size 5, calculate median 
-	        // of every group and store it in median[] array. 
 	        int i; 
 	        int[] median = new int[(n+4)/5]; // There will be floor((n+4)/5) groups; 
 	        for (i=0; i< n / 5; i++) { 
@@ -582,9 +577,7 @@ public class selectProblems
 	            i++; 
 	        }     
 	  
-	        // Find median of all medians using recursive call. 
-	        // If median[] has only one element, then no need 
-	        // of recursive call 
+	        
 	        if (i == 1) {
 	        	return new Pair<Integer, Integer>(median[i - 1], new_comps);
 	        }
